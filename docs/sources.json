@@ -1,0 +1,582 @@
+{
+  "status": "External references and reviewed revisions. Private reference repositories are optional, not build or runtime dependencies. Current application evidence limits are documented in the domain guides and docs/readiness.md.",
+  "documents": {
+    "index": "README.md",
+    "entrypoint": "../README.md",
+    "architecture": "architecture.md",
+    "engineering": "engineering.md",
+    "media": "media.md",
+    "operations": "operations.md",
+    "costs": "costs.md",
+    "internationalization": "internationalization.md",
+    "frontend": "frontend.md",
+    "frontend_design": "frontend-design.md",
+    "readiness": "readiness.md",
+    "product_review": "product-review.md",
+    "implementation": "../IMPLEMENTATION.md",
+    "agent_guidance": "../AGENTS.md",
+    "product_context": "../PRODUCT.md",
+    "access": "access.md",
+    "messaging": "messaging.md",
+    "synchronization": "synchronization.md",
+    "attachments": "attachments.md",
+    "client_storage": "client-storage.md",
+    "media_transport": "media-transport.md"
+  },
+  "media_contract": {
+    "repository": "https://github.com/cloudflare/cloudflare-docs",
+    "revision": "8781b1237989d567d344cf6abf4ebedfa9b76106",
+    "revision_scope": "Source reviewed before PR #33455 merged; retained for reproducible comparisons.",
+    "change_reference": "https://github.com/cloudflare/cloudflare-docs/pull/33455",
+    "merged_revision": "0e6d0a692833d3acc69b2177643b283960014cb4",
+    "published_reviewed_on": "2026-09-23",
+    "published_pages": [
+      "https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/",
+      "https://developers.cloudflare.com/realtime/sfu/concepts/negotiation/",
+      "https://developers.cloudflare.com/realtime/sfu/get-started/connection-patterns/",
+      "https://developers.cloudflare.com/realtime/sfu/platform/limits/",
+      "https://developers.cloudflare.com/realtime/sfu/platform/pricing/"
+    ],
+    "paths": [
+      "src/content/docs/realtime/sfu/concepts/negotiation.mdx",
+      "src/content/docs/realtime/sfu/concepts/sessions-tracks.mdx",
+      "src/content/docs/realtime/sfu/concepts/architecture.mdx",
+      "src/content/docs/realtime/sfu/get-started/connection-patterns.mdx",
+      "src/content/docs/realtime/sfu/features/datachannels.mdx",
+      "src/content/docs/realtime/sfu/features/simulcast.mdx",
+      "src/content/docs/realtime/sfu/features/media-transport-adapters/websocket-adapter.mdx",
+      "src/content/docs/realtime/sfu/platform/limits.mdx",
+      "src/content/docs/realtime/sfu/platform/pricing.mdx",
+      "src/content/docs/realtime/sfu/observability/error-codes.mdx",
+      "src/content/docs/realtime/sfu/best-practices/index.mdx",
+      "public/realtime/static/realtime-api-2024-05-21.yaml"
+    ]
+  },
+  "implementation_references": [
+    {
+      "repository": "bland",
+      "revision": "cf6953f43020caf022aabcfdc703f875a24329dc",
+      "paths": [
+        "src/worker/durable-objects/doc-sync.ts",
+        "src/worker/durable-objects/workspace-indexer.ts",
+        "src/worker/db/d1/schema.ts",
+        "src/client/lib/doc-sync-session.ts",
+        "src/client/lib/queries/search.ts",
+        "src/client/components/sidebar/search-dialog.tsx",
+        "src/worker/routes/search.ts",
+        "src/client/components/editor/lib/page-mention/open-picker.ts"
+      ],
+      "url": "https://git.limic.dev/rachel/bland",
+      "access": "Repository access may be required; optional reference, not a build or runtime dependency."
+    },
+    {
+      "repository": "anvil",
+      "revision": "e8ec48c361391099aec47c88508e688cd6d88e29",
+      "paths": [
+        "src/worker/contracts/project-run.ts",
+        "src/worker/api/private/projects/write-handlers.ts",
+        "src/worker/durable/project-do.ts",
+        "src/worker/durable/run-do.ts",
+        "src/worker/durable/run-do/logs.ts",
+        "src/worker/durable/project-do/commands.ts",
+        "src/worker/durable/project-do/webhooks/deliveries.ts",
+        "src/client/hooks/use-log-stream.ts",
+        "tests/worker/project-do/alarms.test.ts"
+      ],
+      "url": "https://git.limic.dev/rachel/anvil",
+      "access": "Repository access may be required; optional reference, not a build or runtime dependency."
+    },
+    {
+      "repository": "git-on-cloudflare",
+      "revision": "55e216d3b60bbe21f7da8391c76ce0c0e6efff32",
+      "paths": [
+        "src/worker/do/repo/catalog/receive.ts",
+        "src/worker/db/d1/schema/repositories.ts",
+        "src/worker/routes/hono.ts",
+        "src/worker/routes/requestSchemas.ts"
+      ],
+      "url": "https://git.limic.dev/rachel/git-on-cloudflare",
+      "access": "Repository access may be required; optional reference, not a build or runtime dependency."
+    },
+    {
+      "repository": "flamemail",
+      "revision": "dd74cf74953be0105797a6242dbfb13f98e85e0b",
+      "paths": [
+        "src/worker/durable-objects/inbox-ws.ts",
+        "src/worker/api/emails.ts",
+        "src/worker/security.ts",
+        "src/client/hooks/useInbox.ts",
+        "src/shared/contracts/emails.ts",
+        "src/worker/serializers/email.ts"
+      ],
+      "url": "https://git.limic.dev/rachel/flamemail",
+      "access": "Repository access may be required; optional reference, not a build or runtime dependency."
+    },
+    {
+      "repository": "tessera",
+      "revision": "770194bb1767cea100699743ac42ee93114c85db",
+      "paths": [
+        "src/worker/auth/index.ts",
+        "src/worker/api/admin/users.ts",
+        "src/worker/auth/cli-config.ts",
+        "src/client/lib/query.ts",
+        "src/worker/middleware/auth.ts",
+        "src/worker/services/url.ts",
+        "tests/worker/account-linking.test.ts"
+      ],
+      "url": "https://git.limic.dev/rachel/tessera",
+      "access": "Repository access may be required; optional reference, not a build or runtime dependency."
+    },
+    {
+      "repository": "realtime-examples",
+      "revision": "0adca1640ad29d9ce3b89a7a5f88a8622a287eb4",
+      "paths": [
+        "video-room/src/worker.ts",
+        "video-room/src/server/video-room.ts",
+        "video-room/src/server/room-media.ts",
+        "video-room/src/server/session-mutation-queue.ts",
+        "video-room/src/client/media.ts",
+        "video-room/src/client/room-controller.ts",
+        "video-room/src/client/background.ts",
+        "video-room/src/client/main.tsx",
+        "video-room/src/server/http.ts",
+        "video-room/src/shared/protocol.ts",
+        "cloud-gaming/src/client/webrtc.ts",
+        "video-room/src/client/mutation-queue.ts",
+        "video-room/src/server/realtime.ts",
+        "video-room/tests/unit/room-restoration.test.ts"
+      ],
+      "url": "https://github.com/cloudflare/realtime-examples",
+      "access": "public",
+      "review_scope": "Verified main at 0adca1640ad29d9ce3b89a7a5f88a8622a287eb4 and reviewed video-room changes from 9efa20ca4036bf0e2e268b204ea733123ec691ae. Source review only; no example deployment or live provider run."
+    },
+    {
+      "repository": "dab",
+      "revision": "939edf275d64b2d490d10fb48345ac7f5eacfbd5",
+      "paths": [
+        "src/worker/objects/file-dav/writes.ts",
+        "src/worker/objects/file-dav/maintenance.ts",
+        "src/worker/objects/common/collection-object-domain.ts",
+        "src/worker/r2/gc.ts"
+      ],
+      "url": "https://git.limic.dev/rachel/dab",
+      "access": "Repository access may be required; optional reference, not a build or runtime dependency."
+    },
+    {
+      "repository": "tres",
+      "revision": "5db0c46f4f5296b745221e2221d048cb4d68973d",
+      "paths": [
+        "cloudflare/src/services/blobs.ts",
+        "cloudflare/src/api/files.ts",
+        "cloudflare/src/api/sync.ts",
+        "cloudflare/src/db/dal/sync.ts",
+        "frontend/src/lib/api.ts"
+      ],
+      "url": "https://git.limic.dev/rachel/tres",
+      "access": "Repository access may be required; optional reference, not a build or runtime dependency."
+    },
+    {
+      "repository": "limic",
+      "revision": "f022199966a3d57ce590a0ab92ff8fcda4b34606",
+      "application": "Reference guidance; vaskel. retains TypeScript 7 and its chat/media-specific workspace.",
+      "url": "https://limic.dev/frontend-spec.md"
+    }
+  ],
+  "package_versions": "Workspace manifests and the root lockfile own installed versions. Version pins below identify reviewed sources.",
+  "packages": {
+    "application_libraries": {
+      "license": "MIT",
+      "repositories": [
+        "https://github.com/TanStack/form",
+        "https://github.com/lingui/js-lingui",
+        "https://github.com/cloudflare/partykit/tree/main/packages/partysocket",
+        "https://github.com/honojs/middleware/tree/main/packages/zod-validator"
+      ],
+      "documentation": [
+        "https://tanstack.com/form/latest/docs/framework/react/guides/form-composition",
+        "https://lingui.dev/ref/vite-plugin",
+        "https://lingui.dev/ref/catalog-formats",
+        "https://docs.partykit.io/reference/partysocket-api/",
+        "https://hono.dev/docs/guides/validation"
+      ],
+      "contract": "engineering.md#modules-and-validation"
+    },
+    "workbox": {
+      "reviewed_versions": {
+        "vite-plugin-pwa": "1.3.0",
+        "workbox-precaching": "7.4.1",
+        "workbox-routing": "7.4.1",
+        "workbox-build": "7.4.1"
+      },
+      "contract": "client-storage.md#offline-application-shell",
+      "repositories": [
+        "https://github.com/GoogleChrome/workbox",
+        "https://github.com/vite-pwa/vite-plugin-pwa"
+      ],
+      "documentation": [
+        "https://developer.chrome.com/docs/workbox/modules/workbox-precaching",
+        "https://developer.chrome.com/docs/workbox/modules/workbox-build",
+        "https://vite-pwa-org.netlify.app/guide/inject-manifest"
+      ]
+    },
+    "kysely": {
+      "reviewed_version": "0.29.6",
+      "license": "MIT",
+      "owner": "kysely-org"
+    },
+    "kysely-d1": {
+      "reviewed_version": "0.4.0",
+      "license": "MIT",
+      "owner": "aidenwallis",
+      "kysely_peer": "*"
+    },
+    "kysely-durable-objects": {
+      "reviewed_version": "0.2.2",
+      "license": "MIT",
+      "owner": "jeffwilde",
+      "kysely_peer": ">=0.27.0"
+    },
+    "typescript": {
+      "reviewed_version": "7.0.2",
+      "owner": "microsoft",
+      "license": "Apache-2.0",
+      "compiler_command": "tsc"
+    },
+    "@floating-ui/react": {
+      "reviewed_version": "0.27.20",
+      "owner": "floating-ui",
+      "license": "MIT"
+    },
+    "@tanstack/react-query": {
+      "reviewed_version": "5.103.0",
+      "owner": "TanStack",
+      "license": "MIT"
+    },
+    "@tanstack/react-router": {
+      "reviewed_version": "1.170.36",
+      "owner": "TanStack",
+      "license": "MIT"
+    },
+    "@tanstack/react-virtual": {
+      "reviewed_version": "3.14.13",
+      "owner": "TanStack",
+      "license": "MIT"
+    },
+    "message_parser": {
+      "license": "MIT",
+      "repositories": [
+        "https://github.com/remarkjs/react-markdown",
+        "https://github.com/remarkjs/remark",
+        "https://github.com/remarkjs/remark-gfm",
+        "https://github.com/remarkjs/remark-breaks",
+        "https://github.com/hlysine/remark-inline-spoiler"
+      ],
+      "documentation": [
+        "https://spec.commonmark.org/0.31.2/",
+        "https://github.com/remarkjs/react-markdown#architecture"
+      ],
+      "contract": "frontend.md#rendering-and-interaction-lifetimes"
+    },
+    "dexie": {
+      "license": "Apache-2.0",
+      "repository": "https://github.com/dexie/Dexie.js",
+      "documentation": [
+        "https://dexie.org/docs/Version/Version.stores()",
+        "https://dexie.org/docs/Dexie/Dexie.transaction()"
+      ],
+      "contract": "client-storage.md#read-only-history"
+    }
+  },
+  "database_integration": {
+    "basis": "Official Cloudflare contract, reviewed dialect code, and the pinned workerd transaction implementation.",
+    "verification": "engineering.md#native-transactions"
+  },
+  "cloudflare_documents": [
+    {
+      "url": "https://developers.cloudflare.com/durable-objects/platform/limits/",
+      "title": "Limits",
+      "document_id": 3006,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/durable-objects/platform/pricing/",
+      "title": "Pricing",
+      "document_id": 3007,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/durable-objects/best-practices/websockets/",
+      "title": "Use WebSockets",
+      "document_id": 2999,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/durable-objects/api/state/",
+      "title": "Durable Object State",
+      "document_id": 2992,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/d1/platform/limits/",
+      "title": "Limits",
+      "document_id": 2952,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/d1/platform/pricing/",
+      "title": "Pricing",
+      "document_id": 2953,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/d1/best-practices/read-replication/",
+      "title": "Global read replication",
+      "document_id": 2941,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/realtime/sfu/platform/pricing/",
+      "title": "Pricing",
+      "document_id": 4182,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/workers/platform/limits/",
+      "title": "Limits",
+      "document_id": 4714,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/workers/platform/pricing/",
+      "title": "Pricing",
+      "document_id": 4715,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/r2/pricing/",
+      "title": "Pricing",
+      "document_id": 3433,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/queues/platform/limits/",
+      "title": "Limits",
+      "document_id": 3378,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/queues/platform/pricing/",
+      "title": "Pricing",
+      "document_id": 3379,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/email-service/",
+      "title": "Cloudflare Email Service",
+      "document_id": 3031,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/email-service/platform/pricing/",
+      "title": "Pricing",
+      "document_id": 3065,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/email-service/platform/limits/",
+      "title": "Limits",
+      "document_id": 3064,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/",
+      "title": "SQLite-backed Durable Object Storage",
+      "document_id": 2991,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/durable-objects/reference/data-location/",
+      "title": "Data location",
+      "document_id": 3008,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/queues/reference/delivery-guarantees/",
+      "title": "Delivery guarantees",
+      "document_id": 3380,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/r2/api/s3/presigned-urls/",
+      "title": "Presigned URLs",
+      "document_id": 3412,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/workflows/reference/limits/",
+      "title": "Limits",
+      "document_id": 4853,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/kv/concepts/how-kv-works/",
+      "title": "How KV works",
+      "document_id": 3160,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/analytics/analytics-engine/limits/",
+      "title": "Limits",
+      "document_id": 1536,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/agents/communication-channels/webhooks/push-notifications/",
+      "title": "Push notifications",
+      "document_id": 2461,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/r2/objects/upload-objects/",
+      "title": "Upload objects",
+      "document_id": 3407,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/queues/reference/how-queues-works/",
+      "title": "How Queues Works",
+      "document_id": 3382,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/realtime/turn/faq/",
+      "title": "FAQ",
+      "document_id": 4188,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/workers/observability/logs/workers-logs/",
+      "title": "Workers Logs",
+      "document_id": 4595,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/workers/platform/deploy-buttons/",
+      "title": "Deploy to Cloudflare buttons",
+      "document_id": 4712,
+      "access": "Cloudflare documentation MCP and live official documentation"
+    },
+    {
+      "url": "https://developers.cloudflare.com/d1/worker-api/d1-database/",
+      "title": "D1 Database",
+      "document_id": 2919,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/",
+      "title": "Access Durable Objects Storage",
+      "document_id": 2995,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/workers/runtime-apis/web-standards/",
+      "title": "Web standards",
+      "document_id": 4561,
+      "access": "Cloudflare documentation MCP (indexed official documentation)"
+    },
+    {
+      "url": "https://developers.cloudflare.com/cache/reference/csam-scanning/",
+      "title": "CSAM Scanning Tool",
+      "document_id": 90,
+      "access": "Cloudflare documentation MCP and live official documentation"
+    },
+    {
+      "url": "https://developers.cloudflare.com/cache/interaction-cloudflare-products/r2/",
+      "title": "Enable cache in an R2 bucket",
+      "document_id": 22,
+      "access": "Cloudflare documentation MCP"
+    },
+    {
+      "url": "https://developers.cloudflare.com/r2/examples/cache-api/",
+      "title": "Use the Cache API",
+      "document_id": 3452,
+      "access": "Cloudflare documentation MCP"
+    },
+    {
+      "url": "https://developers.cloudflare.com/fundamentals/reference/report-abuse/blocked-content/",
+      "title": "Blocked Content",
+      "document_id": 1716,
+      "access": "Cloudflare documentation MCP"
+    }
+  ],
+  "references": [
+    "https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/",
+    "https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/isComposing",
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter",
+    "https://developers.cloudflare.com/api/resources/csam_scanner/methods/edit/",
+    "https://developers.cloudflare.com/api/resources/csam_scanner/methods/get/",
+    "https://developers.cloudflare.com/cache/changelog/#2025-02-04",
+    "https://developers.cloudflare.com/d1/worker-api/d1-database/#batch",
+    "https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#exec",
+    "https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#transaction",
+    "https://developers.cloudflare.com/durable-objects/api/state/#acceptwebsocket",
+    "https://developers.cloudflare.com/workers/runtime-apis/web-standards/#intl",
+    "https://developers.cloudflare.com/workers/testing/test-harness/get-started/",
+    "https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/",
+    "https://developers.cloudflare.com/workers/vite-plugin/",
+    "https://floating-ui.com/docs/react",
+    "https://github.com/aidenwallis/kysely-d1/blob/1cabfece255e6e74acb1080756e86e630421143b/src/index.ts",
+    "https://github.com/better-auth/better-auth/blob/v1.7.5/packages/kysely-adapter/src/d1-sqlite-dialect.ts",
+    "https://github.com/better-auth/better-auth/blob/v1.7.5/packages/kysely-adapter/src/dialect.ts",
+    "https://github.com/cloudflare/cloudflare-docs/blob/8781b1237989d567d344cf6abf4ebedfa9b76106/public/realtime/static/realtime-api-2024-05-21.yaml",
+    "https://github.com/cloudflare/cloudflare-docs/blob/8781b1237989d567d344cf6abf4ebedfa9b76106/src/content/docs/realtime/sfu/concepts/negotiation.mdx",
+    "https://github.com/cloudflare/cloudflare-docs/blob/8781b1237989d567d344cf6abf4ebedfa9b76106/src/content/docs/realtime/sfu/features/datachannels.mdx",
+    "https://github.com/cloudflare/cloudflare-docs/blob/8781b1237989d567d344cf6abf4ebedfa9b76106/src/content/docs/realtime/sfu/features/media-transport-adapters/websocket-adapter.mdx",
+    "https://github.com/cloudflare/cloudflare-docs/blob/8781b1237989d567d344cf6abf4ebedfa9b76106/src/content/docs/realtime/sfu/features/simulcast.mdx",
+    "https://github.com/cloudflare/cloudflare-docs/blob/8781b1237989d567d344cf6abf4ebedfa9b76106/src/content/docs/realtime/sfu/observability/error-codes.mdx",
+    "https://github.com/cloudflare/cloudflare-docs/blob/8781b1237989d567d344cf6abf4ebedfa9b76106/src/content/docs/realtime/sfu/platform/limits.mdx",
+    "https://github.com/cloudflare/cloudflare-docs/tree/8781b1237989d567d344cf6abf4ebedfa9b76106/src/content/docs/realtime/sfu",
+    "https://github.com/cloudflare/realtime-examples/blob/0adca1640ad29d9ce3b89a7a5f88a8622a287eb4/cloud-gaming/src/client/webrtc.ts",
+    "https://github.com/cloudflare/realtime-examples/blob/0adca1640ad29d9ce3b89a7a5f88a8622a287eb4/video-room/src/server/video-room.ts",
+    "https://github.com/cloudflare/realtime-examples/tree/0adca1640ad29d9ce3b89a7a5f88a8622a287eb4/video-room",
+    "https://github.com/cloudflare/workerd/blob/d605e5257748dccb4a47adcfce960384906f3e5c/src/workerd/api/actor-state.c%2B%2B#L659",
+    "https://github.com/jeffwilde/kysely-durable-objects/blob/4cca5126c62ec62eb5783c822ca417988f9605ea/src/DurableObjectSqliteDialect.ts",
+    "https://github.com/jeffwilde/kysely-durable-objects/blob/4cca5126c62ec62eb5783c822ca417988f9605ea/src/withDoTransaction.ts",
+    "https://github.com/kysely-org/kysely/blob/v0.29.6/src/dialect/sqlite/sqlite-adapter.ts",
+    "https://github.com/kysely-org/kysely/blob/v0.29.6/src/dialect/sqlite/sqlite-driver.ts",
+    "https://kysely.dev/docs/dialects",
+    "https://kysely.dev/docs/migrations",
+    "https://kysely.dev/docs/recipes/splitting-query-building-and-execution",
+    "https://react.dev/blog/2024/12/05/react-19",
+    "https://registry.npmjs.org/kysely-d1/0.4.0",
+    "https://registry.npmjs.org/kysely-durable-objects/0.2.2",
+    "https://registry.npmjs.org/kysely/0.29.6",
+    "https://registry.npmjs.org/typescript/7.0.2",
+    "https://support.discord.com/hc/en-us/articles/208866998-Invites-101",
+    "https://support.discord.com/hc/en-us/articles/212500837-How-to-Delete-your-Discord-Account",
+    "https://support.discord.com/hc/en-us/articles/213595197-How-do-I-delete-a-server",
+    "https://support.discord.com/hc/en-us/articles/216273938-How-to-Transfer-Ownership-of-a-Discord-Server",
+    "https://tailwindcss.com/blog/tailwindcss-v4",
+    "https://tanstack.com/query/latest/docs/framework/react/overview",
+    "https://tanstack.com/router/latest/docs/overview",
+    "https://tanstack.com/virtual/latest/docs/introduction",
+    "https://www.cloudflare.com/service-specific-terms-application-services/#csam-scanning-tool-terms",
+    "https://www.sqlite.org/fts5.html#tokenizers",
+    "https://www.unicode.org/reports/tr15/",
+    "https://www.unicode.org/reports/tr29/",
+    "https://www.w3.org/TR/clreq/",
+    "https://www.w3.org/TR/jlreq/",
+    "https://www.w3.org/TR/klreq/"
+  ],
+  "source_notes": [
+    "Local document references resolve relative to this catalog.",
+    "Official documentation was accessed through the Cloudflare documentation MCP. Source URLs identify the references; copied upstream update timestamps are not maintained.",
+    "Reference repositories are optional source evidence, reviewed read-only at their recorded revisions. Their behavior does not establish vaskel. delivery or validation; local checkout locations are not part of the project contract.",
+    "Pricing assumptions are dated and must be refreshed before budgeting a deployment."
+  ],
+  "validation": {
+    "cjk_tokenizer_fixture": "internationalization.md#search-contract",
+    "bland_cjk_source": "Active DO trigram MATCH for body search; separate includes-based client title matchers. Client and Worker body-search minimum is trim().length >=3; no short-query fallback. No CJK runtime test executed in bland.",
+    "csam_scanning": "Documentation and configuration-API inspection only; no settings changed, no content uploaded/scanned, no live delivery/block test performed."
+  }
+}

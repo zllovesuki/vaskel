@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "paths": { "@/server/*": ["./src/*"] },
+    "lib": ["ES2023"],
+    // Better Auth uses Workers' supported AsyncLocalStorage API. Loading only
+    // this official Node module avoids redefining Wrangler's runtime globals.
+    "types": ["node/async_hooks"]
+  },
+  "include": ["src", "worker-configuration.d.ts"]
+}

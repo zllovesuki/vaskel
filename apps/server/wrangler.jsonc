@@ -1,0 +1,414 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "vaskel",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-16",
+  "compatibility_flags": ["nodejs_compat"],
+  "version_metadata": {
+    "binding": "CF_VERSION_METADATA",
+  },
+  "vars": {
+    "AUTH_ORIGIN": "http://localhost:5173",
+    "PUSH_VAPID_SUBJECT": "mailto:vaskel@example.invalid",
+    "OPERATOR_BOOTSTRAP_EXPIRES_AT": "",
+    "MAIL_FROM": "",
+    "REALTIME_APP_ID": "",
+    "OWNER_SQL_BUDGET_BYTES": "536870912",
+    "INSTANCE_ACCOUNT_LIMIT": "256",
+    "INSTANCE_SERVER_LIMIT": "32",
+    "INSTANCE_CONVERSATION_LIMIT": "512",
+  },
+  "secrets": {
+    "required": [
+      "AUTH_SECRET",
+      "OPERATOR_BOOTSTRAP_SECRET",
+      "REALTIME_APP_SECRET",
+    ],
+  },
+  "assets": {
+    "directory": "../client/dist/client",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api", "/api/*"],
+  },
+  "d1_databases": [
+    {
+      "binding": "IDENTITY_DB",
+      "database_name": "vaskel-identity-local",
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "migrations/d1",
+    },
+  ],
+  "r2_buckets": [
+    {
+      "binding": "ATTACHMENTS",
+      "bucket_name": "vaskel-attachments-local",
+    },
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "SERVER_DO",
+        "class_name": "ServerDO",
+      },
+      {
+        "name": "CONVERSATION_DO",
+        "class_name": "ConversationDO",
+      },
+      {
+        "name": "MEDIA_ROOM",
+        "class_name": "MediaRoomDO",
+      },
+      {
+        "name": "ACCOUNT_MEDIA",
+        "class_name": "AccountMediaDO",
+      },
+      {
+        "name": "EVENT_DISPATCH",
+        "class_name": "EventDispatchDO",
+      },
+      {
+        "name": "NOTIFICATION_DO",
+        "class_name": "NotificationDO",
+      },
+    ],
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": [
+        "ServerDO",
+        "ConversationDO",
+        "MediaRoomDO",
+        "AccountMediaDO",
+        "EventDispatchDO",
+      ],
+    },
+    {
+      "tag": "v2",
+      "new_sqlite_classes": ["NotificationDO"],
+    },
+  ],
+  "queues": {
+    "producers": [{ "binding": "PUSH_QUEUE", "queue": "vaskel-push-local" }],
+    "consumers": [
+      {
+        "queue": "vaskel-push-local",
+        "max_batch_size": 10,
+        "max_batch_timeout": 1,
+        "max_retries": 3,
+      },
+    ],
+  },
+  "triggers": {
+    "crons": ["*/5 * * * *"],
+  },
+  "send_email": [
+    {
+      "name": "EMAIL",
+      "remote": false,
+    },
+  ],
+  "ratelimits": [
+    {
+      "name": "AUTH_RATE_LIMITER",
+      "namespace_id": "3737057620",
+      "simple": {
+        "limit": 20,
+        "period": 60,
+      },
+    },
+    {
+      "name": "SENSITIVE_RATE_LIMITER",
+      "namespace_id": "1323807882",
+      "simple": {
+        "limit": 5,
+        "period": 60,
+      },
+    },
+    {
+      "name": "APPLICATION_RATE_LIMITER",
+      "namespace_id": "1795962568",
+      "simple": {
+        "limit": 300,
+        "period": 60,
+      },
+    },
+    {
+      "name": "INVITE_RATE_LIMITER",
+      "namespace_id": "46063247",
+      "simple": {
+        "limit": 30,
+        "period": 60,
+      },
+    },
+  ],
+  "env": {
+    "staging": {
+      "name": "vaskel-staging",
+      "version_metadata": {
+        "binding": "CF_VERSION_METADATA",
+      },
+      "account_id": "6259e0f35111d6c3f7b6aa38ded6eccc",
+      "workers_dev": false,
+      "preview_urls": false,
+      "routes": [
+        {
+          "pattern": "preview.vaskel.com",
+          "custom_domain": true,
+        },
+      ],
+      "vars": {
+        "AUTH_ORIGIN": "https://preview.vaskel.com",
+        "PUSH_VAPID_SUBJECT": "",
+        "OPERATOR_BOOTSTRAP_EXPIRES_AT": "2026-09-23T19:48:42Z",
+        "MAIL_FROM": "welcome@preview.vaskel.com",
+        "REALTIME_APP_ID": "cd6a8f987a96b305eda3aa38b1ffd948",
+        "OWNER_SQL_BUDGET_BYTES": "536870912",
+        "INSTANCE_ACCOUNT_LIMIT": "256",
+        "INSTANCE_SERVER_LIMIT": "32",
+        "INSTANCE_CONVERSATION_LIMIT": "512",
+      },
+      "secrets": {
+        "required": [
+          "AUTH_SECRET",
+          "OPERATOR_BOOTSTRAP_SECRET",
+          "REALTIME_APP_SECRET",
+        ],
+      },
+      "d1_databases": [
+        {
+          "binding": "IDENTITY_DB",
+          "database_name": "vaskel-identity-staging",
+          "migrations_dir": "migrations/d1",
+          "database_id": "6eaaf0f1-fd21-4b24-93c6-fe42015aa923",
+        },
+      ],
+      "r2_buckets": [
+        {
+          "binding": "ATTACHMENTS",
+          "bucket_name": "vaskel-attachments-staging",
+        },
+      ],
+      "durable_objects": {
+        "bindings": [
+          {
+            "name": "SERVER_DO",
+            "class_name": "ServerDO",
+          },
+          {
+            "name": "CONVERSATION_DO",
+            "class_name": "ConversationDO",
+          },
+          {
+            "name": "MEDIA_ROOM",
+            "class_name": "MediaRoomDO",
+          },
+          {
+            "name": "ACCOUNT_MEDIA",
+            "class_name": "AccountMediaDO",
+          },
+          {
+            "name": "EVENT_DISPATCH",
+            "class_name": "EventDispatchDO",
+          },
+          {
+            "name": "NOTIFICATION_DO",
+            "class_name": "NotificationDO",
+          },
+        ],
+      },
+      "queues": {
+        "producers": [
+          { "binding": "PUSH_QUEUE", "queue": "vaskel-push-staging" },
+        ],
+        "consumers": [
+          {
+            "queue": "vaskel-push-staging",
+            "max_batch_size": 10,
+            "max_batch_timeout": 1,
+            "max_retries": 3,
+          },
+        ],
+      },
+      "send_email": [
+        {
+          "name": "EMAIL",
+          "allowed_sender_addresses": ["welcome@preview.vaskel.com"],
+          "remote": false,
+        },
+      ],
+      "ratelimits": [
+        {
+          "name": "AUTH_RATE_LIMITER",
+          "namespace_id": "1419902977",
+          "simple": {
+            "limit": 20,
+            "period": 60,
+          },
+        },
+        {
+          "name": "SENSITIVE_RATE_LIMITER",
+          "namespace_id": "1793767318",
+          "simple": {
+            "limit": 5,
+            "period": 60,
+          },
+        },
+        {
+          "name": "APPLICATION_RATE_LIMITER",
+          "namespace_id": "1737503146",
+          "simple": {
+            "limit": 300,
+            "period": 60,
+          },
+        },
+        {
+          "name": "INVITE_RATE_LIMITER",
+          "namespace_id": "4099980245",
+          "simple": {
+            "limit": 30,
+            "period": 60,
+          },
+        },
+      ],
+      "observability": {
+        "enabled": true,
+        "redact_query_string": true,
+      },
+    },
+    // Planned application deployment; the apex domain is a separate marketing site.
+    "production": {
+      "name": "vaskel-production",
+      "version_metadata": {
+        "binding": "CF_VERSION_METADATA",
+      },
+      "account_id": "6259e0f35111d6c3f7b6aa38ded6eccc",
+      "workers_dev": false,
+      "preview_urls": false,
+      "routes": [
+        {
+          "pattern": "app.vaskel.com",
+          "custom_domain": true,
+        },
+      ],
+      "vars": {
+        "AUTH_ORIGIN": "https://app.vaskel.com",
+        "PUSH_VAPID_SUBJECT": "",
+        "OPERATOR_BOOTSTRAP_EXPIRES_AT": "",
+        "MAIL_FROM": "",
+        "REALTIME_APP_ID": "",
+        "OWNER_SQL_BUDGET_BYTES": "536870912",
+        "INSTANCE_ACCOUNT_LIMIT": "256",
+        "INSTANCE_SERVER_LIMIT": "32",
+        "INSTANCE_CONVERSATION_LIMIT": "512",
+      },
+      "secrets": {
+        "required": [
+          "AUTH_SECRET",
+          "OPERATOR_BOOTSTRAP_SECRET",
+          "REALTIME_APP_SECRET",
+        ],
+      },
+      "d1_databases": [
+        {
+          "binding": "IDENTITY_DB",
+          "database_name": "vaskel-identity-production",
+          // Provision this database and record its ID before applying migrations.
+          "migrations_dir": "migrations/d1",
+        },
+      ],
+      "r2_buckets": [
+        {
+          "binding": "ATTACHMENTS",
+          "bucket_name": "vaskel-attachments-production",
+        },
+      ],
+      "durable_objects": {
+        "bindings": [
+          {
+            "name": "SERVER_DO",
+            "class_name": "ServerDO",
+          },
+          {
+            "name": "CONVERSATION_DO",
+            "class_name": "ConversationDO",
+          },
+          {
+            "name": "MEDIA_ROOM",
+            "class_name": "MediaRoomDO",
+          },
+          {
+            "name": "ACCOUNT_MEDIA",
+            "class_name": "AccountMediaDO",
+          },
+          {
+            "name": "EVENT_DISPATCH",
+            "class_name": "EventDispatchDO",
+          },
+          {
+            "name": "NOTIFICATION_DO",
+            "class_name": "NotificationDO",
+          },
+        ],
+      },
+      "queues": {
+        "producers": [
+          { "binding": "PUSH_QUEUE", "queue": "vaskel-push-production" },
+        ],
+        "consumers": [
+          {
+            "queue": "vaskel-push-production",
+            "max_batch_size": 10,
+            "max_batch_timeout": 1,
+            "max_retries": 3,
+          },
+        ],
+      },
+      "send_email": [
+        {
+          "name": "EMAIL",
+          "remote": false,
+        },
+      ],
+      "ratelimits": [
+        {
+          "name": "AUTH_RATE_LIMITER",
+          "namespace_id": "2523818791",
+          "simple": {
+            "limit": 20,
+            "period": 60,
+          },
+        },
+        {
+          "name": "SENSITIVE_RATE_LIMITER",
+          "namespace_id": "487253425",
+          "simple": {
+            "limit": 5,
+            "period": 60,
+          },
+        },
+        {
+          "name": "APPLICATION_RATE_LIMITER",
+          "namespace_id": "620812339",
+          "simple": {
+            "limit": 300,
+            "period": 60,
+          },
+        },
+        {
+          "name": "INVITE_RATE_LIMITER",
+          "namespace_id": "4233156360",
+          "simple": {
+            "limit": 30,
+            "period": 60,
+          },
+        },
+      ],
+      "observability": {
+        "enabled": true,
+        "redact_query_string": true,
+      },
+    },
+  },
+}

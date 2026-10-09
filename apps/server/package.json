@@ -1,0 +1,44 @@
+{
+  "name": "@vaskel/server",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev:setup": "node tools/setup-local.mjs",
+    "db:migrate:local": "wrangler d1 migrations apply IDENTITY_DB --local --persist-to .wrangler/state --config wrangler.jsonc",
+    "db:migrate:staging": "wrangler d1 migrations apply IDENTITY_DB --remote --env staging --config wrangler.jsonc",
+    "types": "wrangler types --strict-vars=false --config wrangler.jsonc worker-configuration.d.ts",
+    "typecheck": "tsc -p tsconfig.worker.json && tsc -p tsconfig.demux.json && tsc -p tsconfig.fixtures.json && tsc -p tsconfig.tests.json && tsc -p tsconfig.unit.json && tsc -p tsconfig.json",
+    "test": "vitest run && vitest run --config vitest.unit.config.ts",
+    "test:runtime": "vitest run",
+    "test:unit": "vitest run --config vitest.unit.config.ts"
+  },
+  "dependencies": {
+    "@block65/webcrypto-web-push": "2.0.0",
+    "@hono/zod-validator": "0.9.1",
+    "@opentelemetry/api": "1.9.1",
+    "@orpc/openapi": "1.15.4",
+    "@orpc/server": "1.15.4",
+    "@orpc/zod": "1.15.4",
+    "@vaskel/contracts": "workspace:*",
+    "better-auth": "1.7.5",
+    "fast-png": "8.0.0",
+    "ffmpeg-tiny": "0.1.0",
+    "hono": "4.13.8",
+    "kysely": "0.29.6",
+    "kysely-d1": "0.4.0",
+    "kysely-durable-objects": "0.2.2",
+    "mediabunny": "1.60.0",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-plugin": "1.1.10",
+    "@cloudflare/workers-types": "5.20260915.1",
+    "@msw/cloudflare": "0.0.1",
+    "@types/node": "24.13.5",
+    "msw": "2.15.0",
+    "vitest": "4.1.11",
+    "wrangler": "4.132.0"
+  }
+}

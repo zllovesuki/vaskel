@@ -1,0 +1,26 @@
+/* The classes the shared components draw. */
+@layer components {
+  /* Home's section labels: small caps in Latin, plain in CJK (see base.css). */
+  .section-label {
+    font-size: var(--text-caption);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+  /* A person's colour. Set `--hue` (0-360) on the element. */
+  .person-hue {
+    background: oklch(var(--t-hue-bg-l) var(--t-hue-bg-c) var(--hue, 75));
+    color: oklch(var(--t-hue-ink-l) var(--t-hue-ink-c) var(--hue, 75));
+  }
+  /* Live presence dot with a soft halo. */
+  .live-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 999px;
+    background: var(--color-live);
+    box-shadow: 0 0 0 3px
+      color-mix(in oklch, var(--color-live) 22%, transparent);
+    flex: none;
+  }
+}

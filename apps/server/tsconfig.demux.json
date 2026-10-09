@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["ES2023", "ESNext.Disposable", "DOM"],
+    "types": [],
+    // Mediabunny's WebCodecs declarations overlap TypeScript's DOM library.
+    // Only this adapter uses them; the Worker retains declaration checking.
+    "skipLibCheck": true,
+    "allowJs": true,
+    "checkJs": true
+  },
+  "include": ["src/files/thumbnail/demux.mjs"]
+}

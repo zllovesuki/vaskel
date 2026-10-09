@@ -1,0 +1,111 @@
+/* Also used by the startup skeleton, so the CSS entry imports this eagerly. */
+@layer components {
+  /* Message bodies keep a stable measure in rem, so CJK lines are not narrower. */
+  .message-body {
+    max-width: 40rem;
+  }
+  /*
+   * Real messages and their skeleton share one header/content geometry. The
+   * row stops at the body's measure plus room for the fine-pointer toolbar, so
+   * on a wide pane the actions and the focus ring stay beside the text rather
+   * than at the far edge of the pane.
+   */
+  .message-heading,
+  .message-line {
+    display: grid;
+    grid-template-columns: calc(var(--spacing) * 9) minmax(0, 1fr);
+    column-gap: calc(var(--spacing) * 3);
+    max-width: calc(
+      var(--spacing) * 15 + 40rem + var(--spacing-control-compact) * 4
+    );
+  }
+  .message-heading {
+    padding-top: var(--spacing);
+  }
+  .message-line {
+    position: relative;
+    align-content: center;
+    padding-block: calc(var(--spacing) * 0.5);
+  }
+  /* Controls occupy the row they belong to. Hidden actions never hit-test. */
+  .message-action-trigger,
+  .message-actions,
+  .message-gutter-time {
+    display: inline-flex;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .message-row:is(
+      :hover,
+      :focus-within,
+      [data-actions-open="true"],
+      [data-jump-target="true"]
+    )
+    :is(.message-action-trigger, .message-actions, .message-gutter-time) {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  /*
+   * A mention tints the row on its own layer, so hover and focus darken the
+   * row beneath the tint instead of replacing it.
+   */
+  .message-row[data-mentioned] {
+    background-image: linear-gradient(
+      color-mix(in oklab, var(--color-accent-soft) 40%, transparent) 0 0
+    );
+  }
+  /*
+   * Landing on a message (a search result, a link, Open original) is the one
+   * authored moment: the row warms to the accent and settles back while focus
+   * arrives. An animation outranks the hover and focus fills while it runs,
+   * and the row ends on whatever fill it would have had anyway. Reduced
+   * motion shows the accent as a steady highlight instead (message-row.tsx).
+   */
+  .message-row[data-jump-target="true"] {
+    animation: message-landing 1.6s ease-in-out;
+  }
+  @keyframes message-landing {
+    12%,
+    45% {
+      background-color: var(--color-accent-soft);
+    }
+  }
+  @media (hover: none), (pointer: coarse) {
+    /* Compact rows keep consecutive messages together; the menu matches them. */
+    .message-line {
+      min-height: var(--spacing-control-normal);
+      padding-block: var(--spacing);
+    }
+  }
+  /* Hairline divider with a centred label, used for day and unread markers. */
+  .timeline-divider {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-muted);
+    font-size: var(--text-fine);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .timeline-divider::before,
+  .timeline-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--color-line);
+  }
+  .timeline-divider[data-new] {
+    color: var(--color-accent);
+  }
+  .timeline-divider[data-new]::before,
+  .timeline-divider[data-new]::after {
+    background: var(--color-accent);
+    opacity: 0.6;
+  }
+}
+
+/* Locale rules override letter-spacing even when a utility is present. */
+.timeline-divider:is(:lang(zh), :lang(ja)) {
+  letter-spacing: 0;
+}

@@ -1,0 +1,12 @@
+/*
+ * Plyra Sans SC, TC and JP: variable (100–700) builds of IBM Plex Sans's CJK
+ * sources, sliced along Google's Noto character partitions. The browser
+ * fetches only the slices a page actually renders, and each slice serves
+ * every weight, so a Latin-only visit downloads no CJK files. Both
+ * applications load this sheet after mounting, with the regional system
+ * fonts in base.css available while the stylesheet or a required slice is
+ * unavailable.
+ */
+@import "plyra-sans/sc.css";
+@import "plyra-sans/tc.css";
+@import "plyra-sans/jp.css";

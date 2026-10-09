@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "paths": {
+      "@tests/shared/*": ["../../tests/helpers/*"],
+      "@tests/*": ["./tests/*"],
+      "@/server/*": ["./src/*"]
+    },
+    "lib": ["ES2023"],
+    "types": ["@cloudflare/vitest-plugin/types", "node/async_hooks"],
+    // Vitest/tinybench and MSW browser declarations conflict with Workers globals.
+    // Worker and fixture checks separately validate generated/runtime declarations.
+    "skipLibCheck": true
+  },
+  "include": ["tests", "src", "worker-configuration.d.ts"],
+  "exclude": ["tests/unit"]
+}

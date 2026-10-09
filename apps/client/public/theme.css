@@ -1,0 +1,9 @@
+/* The browser's initial surface follows the saved or system appearance. */
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) {
+    color-scheme: dark;
+  }
+}

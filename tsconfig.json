@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "paths": {
+      "@tests/shared/*": ["./tests/helpers/*"],
+      "@tests/*": ["./tests/*"]
+    },
+    "lib": ["ES2023"],
+    "types": ["node"],
+    // Miniflare's published tooling declarations reference private workspace types.
+    // Application and generated runtime declarations retain full checking.
+    "skipLibCheck": true
+  },
+  "include": ["vitest*.config.ts", "tests/build", "tests/config", "tools"]
+}

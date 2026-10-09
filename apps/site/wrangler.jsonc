@@ -1,0 +1,13 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "vaskel-site",
+  "account_id": "6259e0f35111d6c3f7b6aa38ded6eccc",
+  "workers_dev": false,
+  "preview_urls": false,
+  "compatibility_date": "2026-09-16",
+  "assets": {
+    "directory": "./dist/client",
+    "not_found_handling": "404-page",
+  },
+  "routes": [{ "pattern": "vaskel.com", "custom_domain": true }],
+}

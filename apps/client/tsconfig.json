@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["ES2023"],
+    "types": ["node"],
+    // Miniflare's published tooling declarations reference private workspace types.
+    // Application and generated runtime declarations retain full checking.
+    "skipLibCheck": true
+  },
+  "include": ["vite.config.ts", "vitest.config.ts", "lingui.config.ts", "tools"]
+}

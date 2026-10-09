@@ -1,0 +1,196 @@
+/* Semantic Tailwind tokens resolve the active palette at use time. */
+@theme inline {
+  --color-page: var(--t-page);
+  --color-surface: var(--t-surface);
+  --color-sidebar: var(--t-sidebar);
+  --color-sidebar-hover: var(--t-sidebar-hover);
+  --color-surface-hover: var(--t-surface-hover);
+  --color-wash: var(--t-wash);
+  --color-press: var(--t-press);
+  --color-ink: var(--t-ink);
+  --color-muted: var(--t-muted);
+  --color-line: var(--t-line);
+  --color-subtle: var(--t-subtle);
+  --color-message-hover: var(--t-message-hover);
+  --color-accent: var(--t-accent);
+  --color-accent-hover: var(--t-accent-hover);
+  --color-accent-soft: var(--t-accent-soft);
+  --color-accent-soft-hover: var(--t-accent-soft-hover);
+  --color-on-accent: var(--t-on-accent);
+  --color-live: var(--t-live);
+  --color-error: var(--t-error);
+  --color-error-line: var(--t-error-line);
+  --color-error-soft: var(--t-error-soft);
+  --color-composer-line: var(--t-line);
+  --color-stage: var(--t-stage);
+  --color-stage-raised: var(--t-stage-raised);
+  --color-stage-wash: var(--t-stage-wash);
+  --color-stage-press: var(--t-stage-press);
+  --color-stage-line: var(--t-stage-line);
+  --color-stage-ink: var(--t-stage-ink);
+  --color-stage-muted: var(--t-stage-muted);
+  --color-stage-accent: var(--t-stage-accent);
+  --color-leave: var(--t-leave);
+  --color-leave-hover: var(--t-leave-hover);
+  --color-on-leave: var(--t-on-leave);
+  --color-off: var(--t-off);
+  --color-off-line: var(--t-off-line);
+  --font-sans:
+    "IBM Plex Sans Var", ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono:
+    "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  /* Plex's Text weight: Regular reads light beside Medium at interface sizes. */
+  --font-weight-normal: 450;
+  --text-ui: 0.9333rem;
+  --text-caption: 0.866667rem;
+  --text-fine: 0.8rem;
+  --text-chat: 1.066667rem;
+  --spacing-control-compact: 28px;
+  --spacing-control-normal: 36px;
+  --spacing-control-tall: 40px;
+  --spacing-control-touch: 44px;
+  --spacing-page-gutter: 16px;
+  --shadow-popover: var(--t-shadow-popover);
+  --shadow-row: var(--t-shadow-row);
+  --shadow-composer: var(--t-shadow-composer);
+  /* Arrivals decelerate hard: overlays, the phone Home pane, Jump to latest. */
+  --ease-arrive: cubic-bezier(0.16, 1, 0.3, 1);
+  --breakpoint-sm: 640px;
+  --breakpoint-lg: 900px;
+}
+
+/*
+ * Spacing steps are 4 px, independent of the 15 px root, so control sizes and
+ * the page gutter are whole numbers of steps. Normal-sized controls share one
+ * target, switched for coarse pointers in base.css; the inset is the room that
+ * target leaves above and below a one-line label at the line height where it
+ * is used, so a layout can match the target instead of guessing its size.
+ */
+@theme {
+  --spacing: 4px;
+  --spacing-target: var(--spacing-control-normal);
+  --spacing-target-inset: calc((var(--spacing-target) - 1lh) / 2);
+}
+
+/* A menu or popover trigger while its panel is open keeps its hover wash. */
+@custom-variant popup-open (&[aria-haspopup][aria-expanded="true"]);
+
+/* Expand one dark palette for both an explicit choice and the system default. */
+@custom-variant dark-theme {
+  &:where([data-theme="dark"]) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where(:not([data-theme="light"])) {
+      @slot;
+    }
+  }
+}
+
+:root {
+  color-scheme: light;
+  --t-page: oklch(96.5% 0.014 80);
+  --t-surface: oklch(98.6% 0.007 85);
+  --t-sidebar: oklch(92.5% 0.022 78);
+  --t-ink: oklch(24% 0.02 60);
+  --t-muted: oklch(49% 0.022 65);
+  --t-line: oklch(87% 0.016 80);
+  --t-subtle: oklch(94% 0.013 80);
+  --t-message-hover: oklch(97% 0.011 80);
+  --t-accent: oklch(50% 0.16 35);
+  --t-accent-hover: oklch(45% 0.16 35);
+  --t-accent-soft: oklch(94% 0.04 35);
+  --t-on-accent: oklch(99% 0.01 35);
+  --t-live: oklch(62% 0.16 150);
+  --t-error: oklch(50% 0.17 25);
+  --t-error-line: oklch(85% 0.05 25);
+  --t-error-soft: oklch(96% 0.02 25);
+  --t-stage: oklch(23.5% 0.014 60);
+  --t-stage-raised: oklch(31% 0.014 60);
+  --t-stage-line: oklch(40% 0.014 60);
+  --t-stage-ink: oklch(94% 0.01 80);
+  --t-stage-muted: oklch(70% 0.014 70);
+  --t-stage-accent: oklch(80% 0.13 75);
+  --t-leave: oklch(56% 0.2 25);
+  --t-leave-hover: oklch(50% 0.2 25);
+  --t-on-leave: oklch(99% 0.01 35);
+  --t-off: oklch(78% 0.1 25);
+  --t-off-line: oklch(50% 0.12 25);
+  /*
+   * Hover and press are translucent ink over whatever the control sits on, so
+   * they read on the page, surface, sidebar and tinted boxes alike and never
+   * match the background they cover. The `-hover` colours are those surfaces
+   * under the wash, for cutout rings and tinted states that must stay opaque.
+   */
+  --t-hover-mix: 7%;
+  --t-wash: color-mix(in srgb, var(--t-ink) var(--t-hover-mix), transparent);
+  --t-press: color-mix(
+    in srgb,
+    var(--t-ink) calc(var(--t-hover-mix) * 2),
+    transparent
+  );
+  --t-sidebar-hover: color-mix(
+    in srgb,
+    var(--t-sidebar),
+    var(--t-ink) var(--t-hover-mix)
+  );
+  --t-surface-hover: color-mix(
+    in srgb,
+    var(--t-surface),
+    var(--t-ink) var(--t-hover-mix)
+  );
+  --t-accent-soft-hover: color-mix(
+    in srgb,
+    var(--t-accent-soft),
+    var(--t-ink) var(--t-hover-mix)
+  );
+  /* The stage stays dark in both themes, so its wash is light. */
+  --t-stage-wash: color-mix(in srgb, var(--t-stage-ink) 10%, transparent);
+  --t-stage-press: color-mix(in srgb, var(--t-stage-ink) 18%, transparent);
+  --t-shadow-popover:
+    0 12px 35px oklch(30% 0.01 65 / 0.13), 0 2px 6px oklch(30% 0.01 65 / 0.05);
+  --t-shadow-row: 0 1px 2px oklch(30% 0.02 60 / 0.06);
+  --t-shadow-composer: 0 1px 2px oklch(30% 0.02 60 / 0.05);
+  /* Person hues: light backgrounds with dark ink. */
+  --t-hue-bg-l: 85%;
+  --t-hue-bg-c: 0.08;
+  --t-hue-ink-l: 36%;
+  --t-hue-ink-c: 0.11;
+}
+
+:root {
+  @variant dark-theme {
+    color-scheme: dark;
+    --t-page: oklch(19% 0.012 60);
+    --t-surface: oklch(21.5% 0.012 60);
+    --t-sidebar: oklch(16% 0.012 60);
+    --t-ink: oklch(92% 0.01 80);
+    --t-muted: oklch(67% 0.015 70);
+    --t-line: oklch(29% 0.012 60);
+    --t-subtle: oklch(26.5% 0.013 60);
+    --t-message-hover: oklch(24% 0.012 60);
+    --t-accent: oklch(80% 0.13 75);
+    --t-accent-hover: oklch(85% 0.13 75);
+    --t-accent-soft: oklch(30% 0.05 75);
+    --t-on-accent: oklch(20% 0.02 75);
+    --t-live: oklch(76% 0.16 150);
+    --t-error: oklch(78% 0.12 25);
+    --t-error-line: oklch(45% 0.1 25);
+    --t-error-soft: oklch(28% 0.04 25);
+    --t-stage: oklch(14% 0.012 60);
+    --t-stage-raised: oklch(24% 0.013 60);
+    --t-stage-line: oklch(34% 0.013 60);
+    /* Light ink over dark surfaces moves lightness further per percent. */
+    --t-hover-mix: 6%;
+    --t-shadow-popover:
+      0 12px 35px oklch(5% 0.01 65 / 0.5), 0 2px 6px oklch(5% 0.01 65 / 0.3);
+    --t-shadow-row: 0 1px 2px oklch(5% 0.02 60 / 0.3);
+    --t-shadow-composer: 0 1px 2px oklch(5% 0.02 60 / 0.3);
+    --t-hue-bg-l: 34%;
+    --t-hue-bg-c: 0.07;
+    --t-hue-ink-l: 86%;
+    --t-hue-ink-c: 0.09;
+  }
+}

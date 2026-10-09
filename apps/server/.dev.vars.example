@@ -1,0 +1,22 @@
+# Copy this file to .dev.vars and fill it in, or run:
+#   pnpm run dev:setup
+# .dev.vars is local-only and ignored by Git. Never use example values in production.
+
+# Must match the browser origin. Vite serves the frontend and Worker together.
+AUTH_ORIGIN="http://localhost:5173"
+
+# Setup generates independent random secrets. Set deployment values with Wrangler secrets.
+AUTH_SECRET=""
+OPERATOR_BOOTSTRAP_SECRET=""
+
+# ISO timestamp. Bootstrap is disabled when unset or expired; setup grants one hour.
+OPERATOR_BOOTSTRAP_EXPIRES_AT=""
+
+# Cloudflare Email Sending sender address on an onboarded domain.
+# The EMAIL binding simulates delivery locally; no endpoint or API token is needed.
+# Production verification/reset delivery requires a configured sending domain.
+MAIL_FROM=""
+
+# Operator-owned Realtime SFU application. Empty values keep calls unavailable locally.
+REALTIME_APP_ID=""
+REALTIME_APP_SECRET=""

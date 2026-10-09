@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "types": ["node", "vite/client"],
+    "jsx": "react-jsx",
+    "paths": {
+      "@tests/shared/*": ["../../tests/helpers/*"],
+      "@tests/*": ["./tests/*"],
+      "@/site/*": ["./src/*"]
+    }
+  },
+  "include": ["tests", "src"]
+}

@@ -1,0 +1,21 @@
+@import "tailwindcss" source(".");
+@source "../../../packages/ui/src";
+@import "@vaskel/ui/theme.css";
+@import "@vaskel/ui/base.css";
+@import "@vaskel/ui/components/styles.css";
+@import "@vaskel/ui/components/timeline.css";
+
+/*
+ * Loading bones: one translucent ink fill that reads on the page, surface and
+ * sidebar in both themes, breathing as a group so a waiting surface looks
+ * alive. The shared base CSS stills the animation under reduced motion.
+ */
+@utility bone {
+  background: color-mix(in oklab, var(--color-ink) 8%, transparent);
+  animation: bone-breathe 1.8s ease-in-out infinite;
+}
+@keyframes bone-breathe {
+  50% {
+    opacity: 0.5;
+  }
+}

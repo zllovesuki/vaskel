@@ -1,0 +1,343 @@
+@import "tailwindcss" source(".");
+@source "../../../packages/ui/src";
+@import "@vaskel/ui/theme.css";
+@import "@vaskel/ui/base.css";
+@import "@vaskel/ui/components/styles.css";
+@import "@vaskel/ui/components/timeline.css";
+
+/* The one colour the app has no word for: the screen inside a terminal. */
+@theme inline {
+  --color-terminal: var(--t-terminal);
+}
+:root {
+  --t-terminal: oklch(17% 0.012 60);
+  @variant dark-theme {
+    --t-terminal: oklch(11% 0.012 60);
+  }
+}
+
+/* The page: an install document whose step 0 is the product. */
+@layer components {
+  ::selection {
+    background: color-mix(in oklch, var(--color-accent) 22%, transparent);
+  }
+  * {
+    scrollbar-color: color-mix(in oklch, var(--color-ink) 22%, transparent)
+      transparent;
+    scrollbar-width: thin;
+  }
+  body {
+    padding-inline: var(--spacing-page-gutter);
+  }
+  .wrap {
+    max-width: 1408px;
+    margin-inline: auto;
+  }
+  .copy {
+    font-size: var(--text-chat);
+    line-height: 1.6;
+    max-width: 40rem;
+    text-wrap: pretty;
+  }
+  .copy strong {
+    font-weight: 600;
+  }
+  .copy code,
+  .row code {
+    font-family: var(--font-mono);
+    font-size: 0.92em;
+    background: var(--color-subtle);
+    padding: 1px 6px;
+    border-radius: 4px;
+  }
+  .cols {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 32px 48px;
+    align-items: start;
+  }
+  .rows {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--color-line);
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 12px;
+    min-height: 52px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--color-line);
+    font-size: var(--text-ui);
+  }
+  .row .lines {
+    flex: 1 1 240px;
+    min-width: 0;
+    line-height: 1.3;
+  }
+  .row .lines .s {
+    display: block;
+    font-size: var(--text-caption);
+    color: var(--color-muted);
+  }
+  .row code {
+    overflow-wrap: anywhere;
+  }
+  table.cost {
+    width: 100%;
+    border-collapse: collapse;
+    font-variant-numeric: tabular-nums;
+    font-size: var(--text-ui);
+  }
+  table.cost th,
+  table.cost td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--color-line);
+    text-align: right;
+    vertical-align: top;
+  }
+  table.cost td:not(:first-child) {
+    white-space: nowrap;
+  }
+  table.cost th:first-child,
+  table.cost td:first-child {
+    text-align: left;
+    padding-left: 0;
+  }
+  table.cost thead th {
+    font-size: var(--text-caption);
+    font-weight: 600;
+    color: var(--color-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--color-ink);
+  }
+  table.cost tfoot td {
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-bottom: 0;
+    padding-top: 14px;
+  }
+  /* Preview pieces without an app class string of their own. */
+  .ws {
+    font-family: var(--font-sans);
+    height: 724px;
+    border: 1px solid var(--color-line);
+    border-radius: 12px;
+    text-align: left;
+  }
+  .share {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    border-radius: 8px;
+    background: var(--color-stage-raised);
+    overflow: hidden;
+    position: relative;
+  }
+  .share.big {
+    max-width: 704px;
+    margin-inline: auto;
+  }
+  .termw {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-terminal);
+  }
+  .termbar {
+    flex: none;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--color-stage-muted);
+    background: var(--color-stage-raised);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 0 8px;
+  }
+  .term {
+    flex: 1;
+    min-height: 0;
+    color: var(--color-stage-ink);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.5;
+    padding: 14px 16px;
+    margin: 0;
+    white-space: pre;
+    overflow: hidden;
+  }
+  .term .p {
+    color: var(--color-stage-accent);
+  }
+  .term .ok {
+    color: var(--color-live);
+  }
+  .term .dim {
+    color: var(--color-stage-muted);
+  }
+  /* The person's terminal in step 2, drawn as the shared screen is. */
+  .console {
+    border: 1px solid var(--color-stage-line);
+    border-radius: 12px;
+    background: var(--color-terminal);
+    color: var(--color-stage-ink);
+    box-shadow: var(--shadow-row);
+    overflow: hidden;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .console-bar {
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--color-stage-muted);
+    background: var(--color-stage-raised);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 0 12px;
+  }
+  .console-body {
+    padding: 16px 16px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 1lh;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+  .console-body > div {
+    display: flex;
+    flex-direction: column;
+  }
+  .console-body p {
+    margin: 0;
+    padding-left: 2ch;
+    text-indent: -2ch;
+  }
+  .console .you {
+    color: var(--color-stage-muted);
+  }
+  .console .tool > span {
+    color: var(--color-live);
+  }
+  .console .tool b {
+    font-weight: 600;
+  }
+  .console .out {
+    padding-left: 5ch;
+    text-indent: 0;
+    color: var(--color-stage-muted);
+  }
+  .console .out.lead {
+    text-indent: -3ch;
+  }
+  .console .out.lead > span {
+    color: var(--color-stage-line);
+  }
+  .console .out.dim {
+    opacity: 0.75;
+  }
+  .console-input {
+    margin-top: 0.5lh;
+    padding: 0.35lh 0 0.35lh 1ch;
+    border-block: 1px solid var(--color-stage-line);
+    color: var(--color-stage-ink);
+  }
+  .console-input span::after {
+    content: "";
+    display: inline-block;
+    width: 1ch;
+    height: 1.1em;
+    margin-left: 1ch;
+    vertical-align: -0.2em;
+    background: var(--color-stage-ink);
+    animation: caret 1.1s steps(2, jump-none) infinite;
+  }
+  @keyframes caret {
+    50% {
+      opacity: 0;
+    }
+  }
+  .console-hint {
+    margin-top: -0.75lh;
+    padding-left: 2ch;
+    text-indent: 0;
+    font-size: 11px;
+    color: var(--color-stage-muted);
+  }
+  /* The picture-in-picture card is the app's; only its terminal shrinks. */
+  .pipw .share {
+    border-radius: 0;
+    display: block;
+  }
+  .pipw .term {
+    font-size: 7px;
+    line-height: 1.45;
+    padding: 6px 8px;
+  }
+  .pipw .termbar {
+    height: 12px;
+    line-height: 12px;
+    font-size: 6px;
+  }
+  .timeline {
+    mask-image: linear-gradient(to bottom, transparent, black 28px);
+  }
+  .msg-enter {
+    animation: msg-enter 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @keyframes msg-enter {
+    from {
+      transform: translateY(10px);
+      opacity: 0;
+    }
+  }
+  @media (max-width: 899px) {
+    .cols {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  @media (max-width: 639px) {
+    .console {
+      font-size: 11px;
+    }
+    .console-body {
+      padding: 12px 10px;
+    }
+    table.cost {
+      font-size: var(--text-caption);
+    }
+    table.cost th,
+    table.cost td,
+    table.cost td:not(:first-child) {
+      white-space: normal;
+      padding: 8px 6px;
+    }
+    table.cost th:first-child,
+    table.cost td:first-child {
+      padding-left: 0;
+    }
+    table.cost tfoot td {
+      font-size: 1rem;
+    }
+    .ws {
+      height: 740px;
+    }
+    .ws[data-navigation-open="true"] .ws-side {
+      overflow-y: auto;
+    }
+    .share.big .term {
+      font-size: 8px;
+      line-height: 1.4;
+      padding: 6px 8px;
+    }
+  }
+}

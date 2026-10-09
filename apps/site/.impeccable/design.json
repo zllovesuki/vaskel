@@ -1,0 +1,724 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-21T09:21:13Z",
+  "title": "Design System: vaskel.com",
+  "extensions": {
+    "colorMeta": {
+      "page": {
+        "role": "neutral",
+        "displayName": "Page cream",
+        "canonical": "oklch(96.5% 0.014 80)",
+        "dark": "oklch(19% 0.012 60)",
+        "tonalRamp": [
+          "oklch(15% 0.014 80)",
+          "oklch(26% 0.014 80)",
+          "oklch(38% 0.014 80)",
+          "oklch(50% 0.014 80)",
+          "oklch(61% 0.014 80)",
+          "oklch(73% 0.014 80)",
+          "oklch(84% 0.014 80)",
+          "oklch(95% 0.014 80)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "canonical": "oklch(98.6% 0.007 85)",
+        "dark": "oklch(21.5% 0.012 60)",
+        "tonalRamp": [
+          "oklch(15% 0.007 85)",
+          "oklch(26% 0.007 85)",
+          "oklch(38% 0.007 85)",
+          "oklch(50% 0.007 85)",
+          "oklch(61% 0.007 85)",
+          "oklch(73% 0.007 85)",
+          "oklch(84% 0.007 85)",
+          "oklch(95% 0.007 85)"
+        ]
+      },
+      "sidebar": {
+        "role": "neutral",
+        "displayName": "Sidebar sand",
+        "canonical": "oklch(92.5% 0.022 78)",
+        "dark": "oklch(16% 0.012 60)",
+        "tonalRamp": [
+          "oklch(15% 0.022 78)",
+          "oklch(26% 0.022 78)",
+          "oklch(38% 0.022 78)",
+          "oklch(50% 0.022 78)",
+          "oklch(61% 0.022 78)",
+          "oklch(73% 0.022 78)",
+          "oklch(84% 0.022 78)",
+          "oklch(95% 0.022 78)"
+        ]
+      },
+      "sidebar-hover": {
+        "role": "neutral",
+        "displayName": "Sidebar sand, hover",
+        "canonical": "oklch(88.5% 0.03 78)",
+        "dark": "oklch(24% 0.013 60)",
+        "tonalRamp": [
+          "oklch(15% 0.03 78)",
+          "oklch(26% 0.03 78)",
+          "oklch(38% 0.03 78)",
+          "oklch(50% 0.03 78)",
+          "oklch(61% 0.03 78)",
+          "oklch(73% 0.03 78)",
+          "oklch(84% 0.03 78)",
+          "oklch(95% 0.03 78)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(24% 0.02 60)",
+        "dark": "oklch(92% 0.01 80)",
+        "tonalRamp": [
+          "oklch(15% 0.02 60)",
+          "oklch(26% 0.02 60)",
+          "oklch(38% 0.02 60)",
+          "oklch(50% 0.02 60)",
+          "oklch(61% 0.02 60)",
+          "oklch(73% 0.02 60)",
+          "oklch(84% 0.02 60)",
+          "oklch(95% 0.02 60)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted ink",
+        "canonical": "oklch(49% 0.022 65)",
+        "dark": "oklch(67% 0.015 70)",
+        "tonalRamp": [
+          "oklch(15% 0.022 65)",
+          "oklch(26% 0.022 65)",
+          "oklch(38% 0.022 65)",
+          "oklch(50% 0.022 65)",
+          "oklch(61% 0.022 65)",
+          "oklch(73% 0.022 65)",
+          "oklch(84% 0.022 65)",
+          "oklch(95% 0.022 65)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "oklch(87% 0.016 80)",
+        "dark": "oklch(29% 0.012 60)",
+        "tonalRamp": [
+          "oklch(15% 0.016 80)",
+          "oklch(26% 0.016 80)",
+          "oklch(38% 0.016 80)",
+          "oklch(50% 0.016 80)",
+          "oklch(61% 0.016 80)",
+          "oklch(73% 0.016 80)",
+          "oklch(84% 0.016 80)",
+          "oklch(95% 0.016 80)"
+        ]
+      },
+      "subtle": {
+        "role": "neutral",
+        "displayName": "Subtle",
+        "canonical": "oklch(94% 0.013 80)",
+        "dark": "oklch(26.5% 0.013 60)",
+        "tonalRamp": [
+          "oklch(15% 0.013 80)",
+          "oklch(26% 0.013 80)",
+          "oklch(38% 0.013 80)",
+          "oklch(50% 0.013 80)",
+          "oklch(61% 0.013 80)",
+          "oklch(73% 0.013 80)",
+          "oklch(84% 0.013 80)",
+          "oklch(95% 0.013 80)"
+        ]
+      },
+      "message-hover": {
+        "role": "neutral",
+        "displayName": "Message hover",
+        "canonical": "oklch(97% 0.011 80)",
+        "dark": "oklch(24% 0.012 60)",
+        "tonalRamp": [
+          "oklch(15% 0.011 80)",
+          "oklch(26% 0.011 80)",
+          "oklch(38% 0.011 80)",
+          "oklch(50% 0.011 80)",
+          "oklch(61% 0.011 80)",
+          "oklch(73% 0.011 80)",
+          "oklch(84% 0.011 80)",
+          "oklch(95% 0.011 80)"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Terracotta",
+        "canonical": "oklch(50% 0.16 35)",
+        "dark": "oklch(80% 0.13 75)",
+        "tonalRamp": [
+          "oklch(15% 0.16 35)",
+          "oklch(26% 0.16 35)",
+          "oklch(38% 0.16 35)",
+          "oklch(50% 0.16 35)",
+          "oklch(61% 0.16 35)",
+          "oklch(73% 0.16 35)",
+          "oklch(84% 0.16 35)",
+          "oklch(95% 0.16 35)"
+        ]
+      },
+      "accent-hover": {
+        "role": "primary",
+        "displayName": "Terracotta, deep",
+        "canonical": "oklch(45% 0.16 35)",
+        "dark": "oklch(85% 0.13 75)",
+        "tonalRamp": [
+          "oklch(15% 0.16 35)",
+          "oklch(26% 0.16 35)",
+          "oklch(38% 0.16 35)",
+          "oklch(50% 0.16 35)",
+          "oklch(61% 0.16 35)",
+          "oklch(73% 0.16 35)",
+          "oklch(84% 0.16 35)",
+          "oklch(95% 0.16 35)"
+        ]
+      },
+      "on-accent": {
+        "role": "primary",
+        "displayName": "On terracotta",
+        "canonical": "oklch(99% 0.01 35)",
+        "dark": "oklch(20% 0.02 75)",
+        "tonalRamp": [
+          "oklch(15% 0.01 35)",
+          "oklch(26% 0.01 35)",
+          "oklch(38% 0.01 35)",
+          "oklch(50% 0.01 35)",
+          "oklch(61% 0.01 35)",
+          "oklch(73% 0.01 35)",
+          "oklch(84% 0.01 35)",
+          "oklch(95% 0.01 35)"
+        ]
+      },
+      "live": {
+        "role": "secondary",
+        "displayName": "Live green",
+        "canonical": "oklch(62% 0.16 150)",
+        "dark": "oklch(76% 0.16 150)",
+        "tonalRamp": [
+          "oklch(15% 0.16 150)",
+          "oklch(26% 0.16 150)",
+          "oklch(38% 0.16 150)",
+          "oklch(50% 0.16 150)",
+          "oklch(61% 0.16 150)",
+          "oklch(73% 0.16 150)",
+          "oklch(84% 0.16 150)",
+          "oklch(95% 0.16 150)"
+        ]
+      },
+      "stage": {
+        "role": "tertiary",
+        "displayName": "Stage",
+        "canonical": "oklch(23.5% 0.014 60)",
+        "dark": "oklch(14% 0.012 60)",
+        "tonalRamp": [
+          "oklch(15% 0.014 60)",
+          "oklch(26% 0.014 60)",
+          "oklch(38% 0.014 60)",
+          "oklch(50% 0.014 60)",
+          "oklch(61% 0.014 60)",
+          "oklch(73% 0.014 60)",
+          "oklch(84% 0.014 60)",
+          "oklch(95% 0.014 60)"
+        ]
+      },
+      "stage-raised": {
+        "role": "tertiary",
+        "displayName": "Stage, raised",
+        "canonical": "oklch(31% 0.014 60)",
+        "dark": "oklch(24% 0.013 60)",
+        "tonalRamp": [
+          "oklch(15% 0.014 60)",
+          "oklch(26% 0.014 60)",
+          "oklch(38% 0.014 60)",
+          "oklch(50% 0.014 60)",
+          "oklch(61% 0.014 60)",
+          "oklch(73% 0.014 60)",
+          "oklch(84% 0.014 60)",
+          "oklch(95% 0.014 60)"
+        ]
+      },
+      "stage-line": {
+        "role": "tertiary",
+        "displayName": "Stage hairline",
+        "canonical": "oklch(40% 0.014 60)",
+        "dark": "oklch(34% 0.013 60)",
+        "tonalRamp": [
+          "oklch(15% 0.014 60)",
+          "oklch(26% 0.014 60)",
+          "oklch(38% 0.014 60)",
+          "oklch(50% 0.014 60)",
+          "oklch(61% 0.014 60)",
+          "oklch(73% 0.014 60)",
+          "oklch(84% 0.014 60)",
+          "oklch(95% 0.014 60)"
+        ]
+      },
+      "stage-ink": {
+        "role": "tertiary",
+        "displayName": "Stage ink",
+        "canonical": "oklch(94% 0.01 80)",
+        "dark": "oklch(94% 0.01 80)",
+        "tonalRamp": [
+          "oklch(15% 0.01 80)",
+          "oklch(26% 0.01 80)",
+          "oklch(38% 0.01 80)",
+          "oklch(50% 0.01 80)",
+          "oklch(61% 0.01 80)",
+          "oklch(73% 0.01 80)",
+          "oklch(84% 0.01 80)",
+          "oklch(95% 0.01 80)"
+        ]
+      },
+      "stage-muted": {
+        "role": "tertiary",
+        "displayName": "Stage muted",
+        "canonical": "oklch(70% 0.014 70)",
+        "dark": "oklch(70% 0.014 70)",
+        "tonalRamp": [
+          "oklch(15% 0.014 70)",
+          "oklch(26% 0.014 70)",
+          "oklch(38% 0.014 70)",
+          "oklch(50% 0.014 70)",
+          "oklch(61% 0.014 70)",
+          "oklch(73% 0.014 70)",
+          "oklch(84% 0.014 70)",
+          "oklch(95% 0.014 70)"
+        ]
+      },
+      "stage-accent": {
+        "role": "tertiary",
+        "displayName": "Stage gold",
+        "canonical": "oklch(80% 0.13 75)",
+        "dark": "oklch(80% 0.13 75)",
+        "tonalRamp": [
+          "oklch(15% 0.13 75)",
+          "oklch(26% 0.13 75)",
+          "oklch(38% 0.13 75)",
+          "oklch(50% 0.13 75)",
+          "oklch(61% 0.13 75)",
+          "oklch(73% 0.13 75)",
+          "oklch(84% 0.13 75)",
+          "oklch(95% 0.13 75)"
+        ]
+      },
+      "leave": {
+        "role": "tertiary",
+        "displayName": "Leave red",
+        "canonical": "oklch(56% 0.2 25)",
+        "dark": "oklch(56% 0.2 25)",
+        "tonalRamp": [
+          "oklch(15% 0.2 25)",
+          "oklch(26% 0.2 25)",
+          "oklch(38% 0.2 25)",
+          "oklch(50% 0.2 25)",
+          "oklch(61% 0.2 25)",
+          "oklch(73% 0.2 25)",
+          "oklch(84% 0.2 25)",
+          "oklch(95% 0.2 25)"
+        ]
+      },
+      "on-leave": {
+        "role": "tertiary",
+        "displayName": "On leave",
+        "canonical": "oklch(99% 0.01 35)",
+        "dark": "oklch(99% 0.01 35)",
+        "tonalRamp": [
+          "oklch(15% 0.01 35)",
+          "oklch(26% 0.01 35)",
+          "oklch(38% 0.01 35)",
+          "oklch(50% 0.01 35)",
+          "oklch(61% 0.01 35)",
+          "oklch(73% 0.01 35)",
+          "oklch(84% 0.01 35)",
+          "oklch(95% 0.01 35)"
+        ]
+      },
+      "off": {
+        "role": "tertiary",
+        "displayName": "Off",
+        "canonical": "oklch(78% 0.1 25)",
+        "dark": "oklch(78% 0.1 25)",
+        "tonalRamp": [
+          "oklch(15% 0.1 25)",
+          "oklch(26% 0.1 25)",
+          "oklch(38% 0.1 25)",
+          "oklch(50% 0.1 25)",
+          "oklch(61% 0.1 25)",
+          "oklch(73% 0.1 25)",
+          "oklch(84% 0.1 25)",
+          "oklch(95% 0.1 25)"
+        ]
+      },
+      "off-line": {
+        "role": "tertiary",
+        "displayName": "Off outline",
+        "canonical": "oklch(50% 0.12 25)",
+        "dark": "oklch(50% 0.12 25)",
+        "tonalRamp": [
+          "oklch(15% 0.12 25)",
+          "oklch(26% 0.12 25)",
+          "oklch(38% 0.12 25)",
+          "oklch(50% 0.12 25)",
+          "oklch(61% 0.12 25)",
+          "oklch(73% 0.12 25)",
+          "oklch(84% 0.12 25)",
+          "oklch(95% 0.12 25)"
+        ]
+      },
+      "terminal": {
+        "role": "tertiary",
+        "displayName": "Terminal screen",
+        "canonical": "oklch(17% 0.012 60)",
+        "dark": "oklch(11% 0.012 60)",
+        "tonalRamp": [
+          "oklch(15% 0.012 60)",
+          "oklch(26% 0.012 60)",
+          "oklch(38% 0.012 60)",
+          "oklch(50% 0.012 60)",
+          "oklch(61% 0.012 60)",
+          "oklch(73% 0.012 60)",
+          "oklch(84% 0.012 60)",
+          "oklch(95% 0.012 60)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The six step headings; 30px at 390 and 45px at 1440 with the 15px root. text-wrap: balance."
+      },
+      "wordmark": {
+        "displayName": "Wordmark",
+        "purpose": "\"vaskel.\" in the band; the full stop in accent. 1.45rem in the footer and the exhibit."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Sub-heads inside steps and the app's page titles inside exhibits (the app's h2)."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "The muted sentence under each step heading; 40rem measure, 60rem under step 0."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Step prose in a 40rem measure with text-wrap: pretty."
+      },
+      "chat": {
+        "displayName": "Chat",
+        "purpose": "Message bodies and the composer, as in the app."
+      },
+      "ui": {
+        "displayName": "UI",
+        "purpose": "Controls, nav rows, the cost table, rows and the band's GitHub link."
+      },
+      "ui-strong": {
+        "displayName": "UI strong",
+        "purpose": "Filled and plain buttons, current nav rows, the now-playing title."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Hints under controls, the document head, workloads line, table sub-lines, quotes."
+      },
+      "caption-strong": {
+        "displayName": "Caption strong",
+        "purpose": "The Copy control, Send, stage chips, badges, the \"you:\" marks."
+      },
+      "fine": {
+        "displayName": "Fine",
+        "purpose": "Timestamps, nav sub-lines, counts and the composer hint."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase section labels inside the exhibit and the cost table's column heads; tracking 0 and no case change under zh-Hant, zh-Hans and ja."
+      },
+      "table": {
+        "displayName": "Table",
+        "purpose": "Cost table cells; tabular numerals throughout."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "The curl line at ui size; inline code at 0.92em; the shared terminal at 13px (8px on phones, 7px in the picture-in-picture thumbnail); the agent console at 13px (11px on phones)."
+      },
+      "console": {
+        "displayName": "Console",
+        "purpose": "The agent session in step 2: mono at 13px / 1.5 (11px on phones), wrapped like a terminal with a 2ch hanging indent for turns and 5ch for tool output."
+      }
+    },
+    "shadows": [
+      {
+        "name": "shadow-row",
+        "value": "0 1px 2px oklch(30% 0.02 60 / 0.06)",
+        "dark": "0 1px 2px oklch(5% 0.02 60 / 0.3)",
+        "purpose": "Lift under framed page chrome: curl field, console, plain buttons, current nav row, dock card, Happening-now card."
+      },
+      {
+        "name": "shadow-composer",
+        "value": "0 1px 2px oklch(30% 0.02 60 / 0.05)",
+        "dark": "0 1px 2px oklch(5% 0.02 60 / 0.3)",
+        "purpose": "The composer surface only."
+      },
+      {
+        "name": "shadow-popover",
+        "value": "0 12px 35px oklch(30% 0.01 65 / 0.13), 0 2px 6px oklch(30% 0.01 65 / 0.05)",
+        "dark": "0 12px 35px oklch(5% 0.01 65 / 0.5), 0 2px 6px oklch(5% 0.01 65 / 0.3)",
+        "purpose": "Things that float over content; on this page only the picture-in-picture window."
+      },
+      {
+        "name": "ring-live-halo",
+        "value": "0 0 0 3px color-mix(in oklch, var(--color-live) 22%, transparent)",
+        "purpose": "The live dot's halo. A ring, not elevation."
+      },
+      {
+        "name": "ring-presence",
+        "value": "0 0 0 2px var(--color-sidebar)",
+        "purpose": "Separates the presence dot from its avatar; the ring takes the parent's colour."
+      },
+      {
+        "name": "ring-stack",
+        "value": "0 0 0 2px var(--color-stage)",
+        "purpose": "Separators in an avatar stack; var(--color-surface) inside the room header strip."
+      },
+      {
+        "name": "ring-speaking",
+        "value": "0 0 0 2px var(--color-stage-raised), 0 0 0 4px var(--color-live)",
+        "purpose": "The speaking ring on a stage avatar."
+      }
+    ],
+    "motion": [
+      {
+        "name": "action-hover",
+        "value": "background-color 0.15s ease-out, border-color 0.15s ease-out",
+        "purpose": "Filled and plain buttons."
+      },
+      {
+        "name": "chevron",
+        "value": "transform 0.15s ease-out",
+        "purpose": "The circle head's collapse chevron."
+      },
+      {
+        "name": "msg-enter",
+        "value": "0.42s cubic-bezier(0.16, 1, 0.3, 1); from translateY(10px) and opacity 0",
+        "purpose": "A message arriving in the exhibit's transcript."
+      },
+      {
+        "name": "caret",
+        "value": "1s steps(1) infinite, 50% opacity 0",
+        "purpose": "The terminal caret in the shared screen."
+      },
+      {
+        "name": "copy-feedback",
+        "value": "label swaps to Copied for 1600ms",
+        "purpose": "The curl field's Copy control."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation-duration and transition-duration 0.01ms, scroll-behavior auto; the scripted arrivals do not run",
+        "purpose": "prefers-reduced-motion: reduce. The still frame is complete."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "lg",
+        "value": "900px"
+      }
+    ],
+    "layout": {
+      "rootFontSize": "15px",
+      "spacingUnit": "4px",
+      "gutter": "16px",
+      "contentMax": "1408px",
+      "measure": "40rem",
+      "measureWide": "60rem",
+      "band": {
+        "minHeight": "56px",
+        "paddingBlock": "8px",
+        "gap": "20px"
+      },
+      "step": {
+        "paddingBlock": "56px 64px",
+        "phone": "40px 44px",
+        "headGap": "28px",
+        "columns": "minmax(0,1fr) minmax(0,1fr)",
+        "columnsCost": "minmax(0,2fr) minmax(0,3fr)",
+        "columnGap": "32px 48px"
+      },
+      "exhibit": {
+        "height": "724px",
+        "phoneHeight": "740px",
+        "homeColumn": "264px",
+        "homeColumnNarrow": "240px",
+        "pip": {
+          "width": "280px",
+          "phoneWidth": "150px",
+          "right": "16px",
+          "bottom": "158px"
+        },
+        "opensOn": "lounge stage",
+        "stageShareMax": "704px"
+      },
+      "personHues": [25, 60, 110, 160, 200, 250, 300, 340],
+      "personHueFormula": {
+        "light": {
+          "background": "oklch(85% 0.08 H)",
+          "ink": "oklch(36% 0.11 H)"
+        },
+        "dark": {
+          "background": "oklch(34% 0.07 H)",
+          "ink": "oklch(86% 0.09 H)"
+        }
+      },
+      "tokenSource": "packages/ui/src/theme.css (@vaskel/ui/theme.css); base.css for the regional CJK stacks; the site adds --color-terminal, resolved for both themes with the theme's dark-theme variant."
+    }
+  },
+  "components": [
+    {
+      "name": "Primary action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one filled accent control on the page: Deploy your own in the wordmark band.",
+      "html": "<a class=\"ds-action\" href=\"#deploy\">Deploy your own</a>",
+      "css": ".ds-action { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; padding: 8px 16px; border-radius: 8px; border: 1px solid var(--color-accent, oklch(50% 0.16 35)); background: var(--color-accent, oklch(50% 0.16 35)); color: var(--color-on-accent, oklch(99% 0.01 35)); font-family: 'IBM Plex Sans Var', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.9333rem; font-weight: 600; line-height: 1.5; text-decoration: none; transition: background-color 0.15s ease-out, border-color 0.15s ease-out; } .ds-action:hover { background: var(--color-accent-hover, oklch(45% 0.16 35)); border-color: var(--color-accent-hover, oklch(45% 0.16 35)); } .ds-action:focus-visible { outline: 2px solid var(--color-accent, oklch(50% 0.16 35)); outline-offset: 2px; }"
+    },
+    {
+      "name": "Plain action",
+      "kind": "button",
+      "refersTo": "button-plain",
+      "description": "Surface-and-hairline button with the row shadow; the app's .btn. Every action that is not the one filled action.",
+      "html": "<button type=\"button\" class=\"ds-action-plain\">Create another invitation</button>",
+      "css": ".ds-action-plain { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; padding: 8px 16px; border-radius: 8px; border: 1px solid var(--color-line, oklch(87% 0.016 80)); background: var(--color-surface, oklch(98.6% 0.007 85)); color: var(--color-ink, oklch(24% 0.02 60)); font-family: 'IBM Plex Sans Var', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.9333rem; font-weight: 600; line-height: 1.5; box-shadow: var(--shadow-row, 0 1px 2px oklch(30% 0.02 60 / 0.06)); cursor: pointer; transition: background-color 0.15s ease-out, border-color 0.15s ease-out; } .ds-action-plain:hover { background: var(--color-subtle, oklch(94% 0.013 80)); } .ds-action-plain:focus-visible { outline: 2px solid var(--color-accent, oklch(50% 0.16 35)); outline-offset: 2px; }"
+    },
+    {
+      "name": "Curl field",
+      "kind": "input",
+      "refersTo": "curl-field",
+      "description": "The install command in a hairline field with a Copy control; the path is bold, the prefix hides on phones.",
+      "html": "<div class=\"ds-curl\"><code><span class=\"ds-curl-cmd\">curl -fsSL </span><b>vaskel.com/INSTALL.md</b></code><button type=\"button\" aria-label=\"Copy the install command\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect width=\"14\" height=\"14\" x=\"8\" y=\"8\" rx=\"2\" ry=\"2\"/><path d=\"M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2\"/></svg><span>Copy</span></button></div>",
+      "css": ".ds-curl { display: inline-flex; align-items: stretch; max-width: 100%; border: 1px solid var(--color-line, oklch(87% 0.016 80)); border-radius: 8px; background: var(--color-surface, oklch(98.6% 0.007 85)); color: var(--color-ink, oklch(24% 0.02 60)); box-shadow: var(--shadow-row, 0 1px 2px oklch(30% 0.02 60 / 0.06)); overflow: hidden; font-family: 'IBM Plex Sans Var', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; } .ds-curl code { display: flex; align-items: center; min-height: 40px; padding: 0 14px; font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace; font-size: 0.9333rem; white-space: pre; overflow-x: auto; } .ds-curl code b { font-weight: 600; } .ds-curl button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-width: 96px; padding: 0 12px; border: 0; border-left: 1px solid var(--color-line, oklch(87% 0.016 80)); background: var(--color-subtle, oklch(94% 0.013 80)); color: var(--color-ink, oklch(24% 0.02 60)); font: inherit; font-size: 0.866667rem; font-weight: 600; cursor: pointer; } .ds-curl button:hover { background: var(--color-sidebar-hover, oklch(88.5% 0.03 78)); } .ds-curl button:focus-visible { outline: 2px solid var(--color-accent, oklch(50% 0.16 35)); outline-offset: 2px; outline-offset: -2px; } @media (max-width: 639px) { .ds-curl-cmd { display: none; } }"
+    },
+    {
+      "name": "Step heading",
+      "kind": "custom",
+      "refersTo": "step-heading",
+      "description": "N · Title at display size in IBM Plex Sans; the numeral and dot in muted tabular.",
+      "html": "<h2 class=\"ds-step-heading\"><span class=\"ds-n\">2 · </span>Deploy, with your agent</h2>",
+      "css": ".ds-step-heading { margin: 0; font-family: 'IBM Plex Sans Var', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: clamp(2rem, 1.2rem + 2.6vw, 3rem); line-height: 1.08; font-weight: 700; letter-spacing: -0.03em; color: var(--color-ink, oklch(24% 0.02 60)); text-wrap: balance; } .ds-step-heading .ds-n { color: var(--color-muted, oklch(49% 0.022 65)); font-weight: 600; font-variant-numeric: tabular-nums; } .ds-step-heading:is(:lang(zh), :lang(ja)) { letter-spacing: 0; }"
+    },
+    {
+      "name": "Hairline rows",
+      "kind": "card",
+      "refersTo": "hairline-row",
+      "description": "A list as rows: hairline above the list and under each row, ui text with a muted caption sub-line. No card.",
+      "html": "<div class=\"ds-rows\"><div class=\"ds-row\"><span class=\"ds-row-lines\">A Cloudflare account on the Workers paid plan<span class=\"ds-row-sub\">US$5 a month; the whole instance runs on it.</span></span></div><div class=\"ds-row\"><span class=\"ds-row-lines\">A domain on Cloudflare<span class=\"ds-row-sub\">Your instance gets an exact HTTPS origin, such as <code>chat.example.org</code>.</span></span></div></div>",
+      "css": ".ds-rows { display: flex; flex-direction: column; border-top: 1px solid var(--color-line, oklch(87% 0.016 80)); font-family: 'IBM Plex Sans Var', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--color-ink, oklch(24% 0.02 60)); } .ds-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; min-height: 52px; padding: 10px 0; border-bottom: 1px solid var(--color-line, oklch(87% 0.016 80)); font-size: 0.9333rem; line-height: 1.5; } .ds-row-lines { flex: 1 1 240px; min-width: 0; line-height: 1.3; } .ds-row-sub { display: block; font-size: 0.866667rem; color: var(--color-muted, oklch(49% 0.022 65)); } .ds-row code { font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace; font-size: 0.866667rem; background: var(--color-subtle, oklch(94% 0.013 80)); padding: 2px 6px; border-radius: 4px; }"
+    },
+    {
+      "name": "Agent console",
+      "kind": "card",
+      "refersTo": "console",
+      "description": "The person's terminal while their agent follows INSTALL.md: a 12px frame on terminal with a stage-raised title bar; turns in a coding agent's transcript shapes, tool output folded as the terminal folds it, and the resting input line with a caret.",
+      "html": "<div class=\"ds-console\" role=\"region\" aria-label=\"A coding agent's terminal session following INSTALL.md\"><div class=\"ds-console-bar\">wren@mbp — claude — ~/loft</div><div class=\"ds-console-body\"><p class=\"you\"><span aria-hidden=\"true\">&gt; </span>Set up vaskel. for my friends. Follow https://vaskel.com/INSTALL.md</p><div><p class=\"tool\"><span aria-hidden=\"true\">● </span><b>Bash</b>(wrangler d1 create vaskel-identity-production)</p><p class=\"out lead\"><span aria-hidden=\"true\">⎿  </span>✅ Successfully created DB 'vaskel-identity-production' in region WNAM</p><p class=\"out dim\">… +12 lines (ctrl+o to expand)</p></div><p class=\"said\"><span aria-hidden=\"true\">● </span>Deployed. Open https://chat.example.org/bootstrap to become the host.</p><div class=\"ds-console-input\" aria-hidden=\"true\"><span>&gt;</span></div></div></div>",
+      "css": ".ds-console { border: 1px solid var(--color-stage-line, oklch(40% 0.014 60)); border-radius: 12px; background: var(--color-terminal, oklch(17% 0.012 60)); color: var(--color-stage-ink, oklch(94% 0.01 80)); box-shadow: var(--shadow-row, 0 1px 2px oklch(30% 0.02 60 / 0.06)); overflow: hidden; font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace; font-size: 13px; line-height: 1.5; } .ds-console-bar { height: 28px; line-height: 28px; text-align: center; font-size: 11px; color: var(--color-stage-muted, oklch(70% 0.014 70)); background: var(--color-stage-raised, oklch(31% 0.014 60)); padding: 0 12px; } .ds-console-body { padding: 16px 16px 14px; display: flex; flex-direction: column; gap: 1lh; white-space: pre-wrap; overflow-wrap: anywhere; } .ds-console-body p { margin: 0; padding-left: 2ch; text-indent: -2ch; } .ds-console .you { color: var(--color-stage-muted, oklch(70% 0.014 70)); } .ds-console .tool > span { color: var(--color-live, oklch(62% 0.16 150)); } .ds-console .tool b { font-weight: 600; } .ds-console .out { padding-left: 5ch; text-indent: 0; color: var(--color-stage-muted, oklch(70% 0.014 70)); } .ds-console .out.lead { text-indent: -3ch; } .ds-console .out.dim { opacity: 0.75; } .ds-console-input { margin-top: 0.5lh; padding: 0.35lh 0 0.35lh 1ch; border-block: 1px solid var(--color-stage-line, oklch(40% 0.014 60)); } .ds-console-input span::after { content: ''; display: inline-block; width: 1ch; height: 1.1em; margin-left: 1ch; vertical-align: -0.2em; background: var(--color-stage-ink, oklch(94% 0.01 80)); }"
+    },
+    {
+      "name": "Cost table",
+      "kind": "custom",
+      "refersTo": "cost-table-cell",
+      "description": "Tabular numerals, right-aligned figures, an ink rule under the uppercase head, muted zeros, the subtotal at 1.2rem.",
+      "html": "<table class=\"ds-cost\"><thead><tr><th scope=\"col\">Per month</th><th scope=\"col\">Small instance</th><th scope=\"col\">Busy instance</th></tr></thead><tbody><tr><td>Workers paid plan</td><td>$5.00</td><td>$5.00</td></tr><tr><td>D1</td><td class=\"ds-zero\">$0.00</td><td class=\"ds-zero\">$0.00</td></tr><tr><td>SFU and TURN egress</td><td class=\"ds-zero\">$0.00<span class=\"ds-sub\">353 GB</span></td><td class=\"ds-big\">$126.47<span class=\"ds-sub\">3,529 GB</span></td></tr></tbody><tfoot><tr><td>Modeled subtotal</td><td>$5.15</td><td>$139.92</td></tr></tfoot></table>",
+      "css": ".ds-cost { width: 100%; border-collapse: collapse; font-family: 'IBM Plex Sans Var', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.9333rem; line-height: 1.5; color: var(--color-ink, oklch(24% 0.02 60)); font-variant-numeric: tabular-nums; } .ds-cost th, .ds-cost td { padding: 10px 12px; border-bottom: 1px solid var(--color-line, oklch(87% 0.016 80)); text-align: right; vertical-align: top; } .ds-cost th:first-child, .ds-cost td:first-child { text-align: left; padding-left: 0; white-space: nowrap; } .ds-cost td:not(:first-child) { white-space: nowrap; } .ds-cost thead th { font-size: 0.866667rem; font-weight: 600; color: var(--color-muted, oklch(49% 0.022 65)); letter-spacing: 0.06em; text-transform: uppercase; border-bottom: 1px solid var(--color-ink, oklch(24% 0.02 60)); } .ds-cost .ds-sub { display: block; margin-top: 2px; font-size: 0.866667rem; font-weight: 400; color: var(--color-muted, oklch(49% 0.022 65)); } .ds-cost tfoot td { font-weight: 700; font-size: 1.2rem; border-bottom: 0; padding-top: 14px; } .ds-cost .ds-zero { color: var(--color-muted, oklch(49% 0.022 65)); } .ds-cost .ds-big { font-weight: 600; }"
+    },
+    {
+      "name": "Home nav rows",
+      "kind": "nav",
+      "refersTo": "nav-row",
+      "description": "The app's Home rows on sidebar sand: muted at rest, lifted surface for the current room, ink with an accent dot for unread, a live dot for a voice room in use.",
+      "html": "<div class=\"ds-home\"><p class=\"ds-section-label\">Your circles</p><button type=\"button\" class=\"ds-nav-row ds-current\" aria-current=\"page\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"4\" x2=\"20\" y1=\"9\" y2=\"9\"/><line x1=\"4\" x2=\"20\" y1=\"15\" y2=\"15\"/><line x1=\"10\" x2=\"8\" y1=\"3\" y2=\"21\"/><line x1=\"16\" x2=\"14\" y1=\"3\" y2=\"21\"/></svg><span class=\"ds-nav-name\">general</span></button><button type=\"button\" class=\"ds-nav-row ds-unread\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"4\" x2=\"20\" y1=\"9\" y2=\"9\"/><line x1=\"4\" x2=\"20\" y1=\"15\" y2=\"15\"/><line x1=\"10\" x2=\"8\" y1=\"3\" y2=\"21\"/><line x1=\"16\" x2=\"14\" y1=\"3\" y2=\"21\"/></svg><span class=\"ds-nav-name\">memes</span><span class=\"ds-unread-dot\"></span></button><button type=\"button\" class=\"ds-nav-row\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z\"/><path d=\"M16 9a5 5 0 0 1 0 6\"/></svg><span class=\"ds-nav-name\">Lounge</span><span class=\"ds-live-dot\"></span></button></div>",
+      "css": ".ds-home { width: 264px; padding: 8px 10px; background: var(--color-sidebar, oklch(92.5% 0.022 78)); color: var(--color-ink, oklch(24% 0.02 60)); font-family: 'IBM Plex Sans Var', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.5; } .ds-section-label { margin: 0 0 4px; padding: 0 10px; font-size: 0.866667rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-muted, oklch(49% 0.022 65)); } .ds-section-label:is(:lang(zh), :lang(ja)) { letter-spacing: 0; text-transform: none; } .ds-nav-row { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 36px; margin-top: 2px; padding: 6px 10px; border: 0; border-radius: 8px; background: transparent; color: var(--color-muted, oklch(49% 0.022 65)); font: inherit; font-size: 0.9333rem; font-weight: 500; text-align: left; cursor: pointer; } .ds-nav-row svg { flex: none; opacity: 0.7; } .ds-nav-row:hover { background: var(--color-sidebar-hover, oklch(88.5% 0.03 78)); color: var(--color-ink, oklch(24% 0.02 60)); } .ds-nav-row.ds-current { background: var(--color-surface, oklch(98.6% 0.007 85)); color: var(--color-ink, oklch(24% 0.02 60)); font-weight: 600; box-shadow: var(--shadow-row, 0 1px 2px oklch(30% 0.02 60 / 0.06)); } .ds-nav-row.ds-current:hover { background: var(--color-surface, oklch(98.6% 0.007 85)); } .ds-nav-row.ds-unread { color: var(--color-ink, oklch(24% 0.02 60)); font-weight: 600; } .ds-nav-row:focus-visible { outline: 2px solid var(--color-accent, oklch(50% 0.16 35)); outline-offset: 2px; } .ds-nav-name { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .ds-unread-dot { width: 6px; height: 6px; border-radius: 999px; background: var(--color-accent, oklch(50% 0.16 35)); flex: none; } .ds-live-dot { width: 8px; height: 8px; border-radius: 999px; background: var(--color-live, oklch(62% 0.16 150)); box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-live, oklch(62% 0.16 150)) 22%, transparent); flex: none; }"
+    },
+    {
+      "name": "Happening-now card",
+      "kind": "card",
+      "refersTo": "now-card",
+      "description": "The one dark card in Home: the live call with stacked person-hue avatars, its circle, the count and who is sharing. Stage colours; opens the stage.",
+      "html": "<button type=\"button\" class=\"ds-now-card\"><span class=\"ds-stack\" aria-hidden=\"true\"><span class=\"ds-avatar\" style=\"--hue:110\">s</span><span class=\"ds-avatar\" style=\"--hue:200\">w</span><span class=\"ds-avatar\" style=\"--hue:60\">汤</span><span class=\"ds-avatar ds-more\">+2</span></span><span class=\"ds-lines\"><span class=\"ds-title\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M2 10v3\"/><path d=\"M6 6v11\"/><path d=\"M10 3v18\"/><path d=\"M14 8v7\"/><path d=\"M18 5v13\"/><path d=\"M22 10v3\"/></svg><span class=\"ds-name\">Lounge</span><span class=\"ds-ctx\">Loft</span></span><span class=\"ds-sub\">5 in the call</span><span class=\"ds-sub\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect width=\"20\" height=\"14\" x=\"2\" y=\"3\" rx=\"2\"/><line x1=\"8\" x2=\"16\" y1=\"21\" y2=\"21\"/><line x1=\"12\" x2=\"12\" y1=\"17\" y2=\"21\"/></svg>s0ren is sharing</span></span></button>",
+      "css": ".ds-now-card { display: flex; align-items: center; gap: 10px; width: 264px; padding: 8px 12px; border: 0; border-radius: 8px; background: var(--color-stage, oklch(23.5% 0.014 60)); color: var(--color-stage-ink, oklch(94% 0.01 80)); font-family: 'IBM Plex Sans Var', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.25; text-align: left; box-shadow: var(--shadow-row, 0 1px 2px oklch(30% 0.02 60 / 0.06)); cursor: pointer; } .ds-now-card:hover { background: var(--color-stage-raised, oklch(31% 0.014 60)); } .ds-now-card:focus-visible { outline: 2px solid var(--color-accent, oklch(50% 0.16 35)); outline-offset: 2px; } .ds-stack { display: flex; flex: none; } .ds-avatar { display: grid; place-items: center; width: 24px; height: 24px; margin-left: -6px; border-radius: 30%; font-size: 0.8rem; font-weight: 700; background: oklch(var(--t-hue-bg-l, 85%) var(--t-hue-bg-c, 0.08) var(--hue, 75)); color: oklch(var(--t-hue-ink-l, 36%) var(--t-hue-ink-c, 0.11) var(--hue, 75)); box-shadow: 0 0 0 2px var(--color-stage, oklch(23.5% 0.014 60)); } .ds-avatar:first-child { margin-left: 0; } .ds-avatar.ds-more { background: var(--color-stage-raised, oklch(31% 0.014 60)); color: var(--color-stage-ink, oklch(94% 0.01 80)); font-size: 0.8rem; font-weight: 600; } .ds-lines { min-width: 0; flex: 1; } .ds-title { display: flex; align-items: center; gap: 6px; font-size: 0.9333rem; font-weight: 600; } .ds-title svg { color: var(--color-live, oklch(62% 0.16 150)); } .ds-ctx { font-weight: 400; color: var(--color-stage-muted, oklch(70% 0.014 70)); } .ds-sub { display: flex; align-items: center; gap: 6px; margin-top: 1px; font-size: 0.866667rem; color: var(--color-stage-muted, oklch(70% 0.014 70)); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Install File",
+    "overview": "The landing page is INSTALL.md with the product as step 0. It reads top to bottom in the order a host proceeds: what you get (the workspace itself, operable), what you need, the deploy, becoming the host, inviting people, what it costs. The wordmark band carries the sentence and the single action; nothing on the page is arranged the way the category arranges it. There is no hero slogan, no feature cards, no pricing grid, no logo wall, and the offer is never hidden behind the product.\n\nThe world is Lounge, the app's own, borrowed whole: warm cream page, sand sidebar, terracotta accent for the one action and for links, the dark stage only inside call surfaces, live green for presence, ID-derived person hues, IBM Plex everywhere. The site's own layer is typographic and structural rather than chromatic: IBM Plex set large with tight tracking for numbered step headings, hairline rows in place of cards, and a frame only where the page shows something (the workspace, the person's terminal while their agent follows INSTALL.md, an app screen). With all content removed the page is a cream ground, one terracotta word, hairlines and one dark rectangle.\n\nDensity is generous between steps and app-dense inside the exhibits, because the exhibit is the app at its real 15px base rather than a picture of it. Light and dark come from the same tokens, resolved by `data-theme` or `prefers-color-scheme` exactly as in the app. Confirmed rejections: Discord marketing tells (blurple, mascots, character illustration), startup chrome (gradient blobs, glass cards, badge rows, logo walls, floating or 3D screenshots), fabricated proof, display faces and shipped rasters.",
+    "keyCharacteristics": [
+      "Tokens are consumed from the app's theme (`@vaskel/ui/theme.css`), never redefined; the site adds one colour (`terminal`).",
+      "One filled accent control on the page (Deploy your own); every other control is hairline-and-surface, plain text, or ink-filled.",
+      "Step headings read `N · Title` in IBM Plex Sans at clamp(2rem, 1.2rem + 2.6vw, 3rem), 700, -0.03em, the numeral in muted.",
+      "Hairline rows, not cards; 12px frames with the row shadow are reserved for exhibits.",
+      "The dark stage and its gold appear only inside call surfaces (Happening-now card, pinned bar, picture-in-picture window, stage, shared terminal) and the agent console.",
+      "Exhibits are DOM built from the app's components, operable and localized through the four real catalogs in the visitor's browser language; no raster ships.",
+      "Light and dark from the same tokens, with `data-theme` and `prefers-color-scheme` as in the app."
+    ],
+    "rules": [
+      {
+        "name": "The Borrowed Palette Rule",
+        "body": "site.css declares no colour literal; every colour is a `var(--color-*)` from the app's theme, and the site's only addition is `terminal`. A colour the app does not have is a colour the site does not have.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Filled Action Rule",
+        "body": "Outside the exhibits, exactly one control on the page is filled with `accent`: Deploy your own in the wordmark band. Everything else is surface-and-hairline, plain text, or ink-filled.",
+        "section": "colors"
+      },
+      {
+        "name": "The Stage Stays Inside the Call Rule",
+        "body": "`stage` and `stage-accent` appear only on call surfaces and on screens (the shared terminal, the agent console). The page never sets a dark band or section; dark on the cream page means a call is happening or a terminal is open.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Family Set Large Rule",
+        "body": "Type contrast comes from size, weight and tracking of IBM Plex, never from a second family. Tracking tightens as size grows (-0.02em at 1.1rem, -0.03em at display, -0.06em on the wordmark) and is zeroed under CJK languages.",
+        "section": "typography"
+      },
+      {
+        "name": "The Numbered Heading Rule",
+        "body": "Every step heading is `N · Title`: the numeral and the middle dot in muted at 600 tabular, the title in ink. The sequence starts at 0 with the product itself. Headings carry no eyebrow or kicker above them.",
+        "section": "typography"
+      },
+      {
+        "name": "The Row Shadow Rule",
+        "body": "Page chrome lifts by at most the row shadow; the popover shadow belongs to things that float over content. No shadow is invented on the site.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do consume `@vaskel/ui` unchanged (theme, base, components and timeline) under the app's own token names; add a site token only for something the app has no word for, as `terminal` was.",
+      "Do keep one filled `accent` control per page and hairline-and-surface for the rest.",
+      "Do number every step heading `N · Title` at the display style, numeral in muted tabular, with no eyebrow above it.",
+      "Do lay lists out as hairline rows and reserve 12px frames with the row shadow for exhibits (the workspace, the agent console, an app screen).",
+      "Do build exhibits from the app's own components in DOM, localized through the four catalogs with `lang` set on the exhibit from the visitor's browser; ship no raster.",
+      "Do keep the dark stage, its gold and the popover shadow inside call surfaces and screens; the agent console is a screen.",
+      "Do keep the 15px root, the 16px gutter, the 1408px cap, the 40rem measure and the 640px / 900px breakpoints.",
+      "Do set every number that lines up (costs, times, counts, step numerals) in tabular numerals.",
+      "Do honour `prefers-reduced-motion`: transitions collapse to 0.01ms and scripted motion does not run; the still frame is complete."
+    ],
+    "donts": [
+      "Don't load a display face or a second family; Plex at display size is the identity.",
+      "Don't introduce Discord marketing tells: blurple, mascots, character illustration.",
+      "Don't add startup chrome: gradient blobs, glass cards, badge rows, logo walls, floating or 3D screenshots.",
+      "Don't add proof surfaces (testimonial cards, member counts, uptime, benchmarks); cost figures come only from docs/cost-scenarios.json.",
+      "Don't put a dark band or section on the page; dark means a call surface or a terminal.",
+      "Don't invent a shadow, a radius or a colour literal in site.css; the app's three shadows, its radius scale and its tokens are the vocabulary.",
+      "Don't restyle the app's components inside an exhibit; the exhibit is proof because it is the app's geometry.",
+      "Don't letter-space or uppercase under zh-Hant, zh-Hans or ja."
+    ]
+  }
+}

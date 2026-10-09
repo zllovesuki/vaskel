@@ -1,0 +1,108 @@
+[
+  {
+    "workload": {
+      "name": "Small instance",
+      "text_messages": 30000,
+      "worker_requests": 500000,
+      "worker_cpu_ms": 2500000,
+      "do_http_rpc_alarm_requests": 150000,
+      "do_websocket_upgrades": 10000,
+      "do_incoming_ws_messages": 0,
+      "do_active_object_seconds": 50000,
+      "do_rows_read": 2000000,
+      "do_rows_written": 300000,
+      "do_gb_month": 2,
+      "d1_rows_read": 1000000,
+      "d1_rows_written": 20000,
+      "d1_gb_month": 0.25,
+      "r2_gb_month": 20,
+      "r2_class_a": 20000,
+      "r2_class_b": 200000,
+      "queue_operations": 15000,
+      "log_events": 200000,
+      "outbound_emails": 1000,
+      "audio_only_participant_minutes": 72000,
+      "audio_only_received_mbps": 0.128,
+      "audiovisual_participant_minutes": 12000,
+      "audiovisual_received_mbps": 2.5,
+      "media_overhead_multiplier": 1.2,
+      "other_realtime_egress_gb": 0
+    },
+    "derived": {
+      "do_request_equivalents": 160000.0,
+      "do_gb_seconds": 6400.0,
+      "realtime_egress_gb": 352.944
+    },
+    "monthly_usd": {
+      "workers": 5.0,
+      "do_compute": 0.0,
+      "do_sql": 0.0,
+      "d1": 0.0,
+      "r2": 0.15,
+      "queues": 0.0,
+      "logs": 0.0,
+      "email": 0.0,
+      "sfu_and_turn": 0.0
+    },
+    "modeled_subtotal_usd": 5.15,
+    "excluded": [
+      "Workflows, KV, Images, Stream, Containers, Workers AI, Vectorize",
+      "Extra recording, transcription, adapters, and standalone TURN unless entered",
+      "Support plans, domains, taxes, client distribution and engineering",
+      "Unmodeled retries, physical index writes, migrations and archival copies"
+    ]
+  },
+  {
+    "workload": {
+      "name": "Busy instance",
+      "text_messages": 300000,
+      "worker_requests": 5000000,
+      "worker_cpu_ms": 25000000,
+      "do_http_rpc_alarm_requests": 1500000,
+      "do_websocket_upgrades": 100000,
+      "do_incoming_ws_messages": 0,
+      "do_active_object_seconds": 1000000,
+      "do_rows_read": 20000000,
+      "do_rows_written": 3000000,
+      "do_gb_month": 20,
+      "d1_rows_read": 10000000,
+      "d1_rows_written": 200000,
+      "d1_gb_month": 2.5,
+      "r2_gb_month": 200,
+      "r2_class_a": 200000,
+      "r2_class_b": 2000000,
+      "queue_operations": 150000,
+      "log_events": 2000000,
+      "outbound_emails": 10000,
+      "audio_only_participant_minutes": 720000,
+      "audio_only_received_mbps": 0.128,
+      "audiovisual_participant_minutes": 120000,
+      "audiovisual_received_mbps": 2.5,
+      "media_overhead_multiplier": 1.2,
+      "other_realtime_egress_gb": 0
+    },
+    "derived": {
+      "do_request_equivalents": 1600000.0,
+      "do_gb_seconds": 128000.0,
+      "realtime_egress_gb": 3529.4399999999996
+    },
+    "monthly_usd": {
+      "workers": 5.0,
+      "do_compute": 0.15,
+      "do_sql": 3.0,
+      "d1": 0.0,
+      "r2": 2.85,
+      "queues": 0.0,
+      "logs": 0.0,
+      "email": 2.45,
+      "sfu_and_turn": 126.472
+    },
+    "modeled_subtotal_usd": 139.92,
+    "excluded": [
+      "Workflows, KV, Images, Stream, Containers, Workers AI, Vectorize",
+      "Extra recording, transcription, adapters, and standalone TURN unless entered",
+      "Support plans, domains, taxes, client distribution and engineering",
+      "Unmodeled retries, physical index writes, migrations and archival copies"
+    ]
+  }
+]

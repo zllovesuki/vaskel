@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.client.json",
+  "compilerOptions": {
+    "paths": {
+      "@/client/*": ["./src/*"],
+      "@tests/shared/*": ["../../tests/helpers/*"],
+      "@tests/*": ["./tests/*"]
+    },
+    "types": ["vite/client", "node"]
+  },
+  "include": ["src", "tests"]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "@vaskel/contracts",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    "./account-events": "./src/account-events.ts",
+    "./account": "./src/account.ts",
+    "./activity": "./src/activity.ts",
+    "./administration": "./src/administration.ts",
+    "./api": "./src/api.ts",
+    "./attachments": "./src/attachments.ts",
+    "./blocking": "./src/blocking.ts",
+    "./capacity": "./src/capacity.ts",
+    "./directory": "./src/directory.ts",
+    "./health": "./src/health.ts",
+    "./identity": "./src/identity.ts",
+    "./instance-capacity": "./src/instance-capacity.ts",
+    "./instance": "./src/instance.ts",
+    "./media-http": "./src/media-http.ts",
+    "./media": "./src/media.ts",
+    "./message-spoiler": "./src/message-spoiler.ts",
+    "./message-text": "./src/message-text.ts",
+    "./messaging": "./src/messaging.ts",
+    "./notification-payload": "./src/notification-payload.ts",
+    "./notifications": "./src/notifications.ts",
+    "./occupancy": "./src/occupancy.ts",
+    "./preferences": "./src/preferences.ts",
+    "./presence": "./src/presence.ts",
+    "./resources": "./src/resources.ts",
+    "./search": "./src/search.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@opentelemetry/api": "1.9.1",
+    "@orpc/contract": "1.15.4",
+    "mdast-util-inline-spoiler": "2.1.0",
+    "micromark-extension-inline-spoiler": "2.1.0",
+    "remark-breaks": "4.0.0",
+    "remark-gfm": "4.0.1",
+    "remark-parse": "11.0.0",
+    "unified": "11.0.5",
+    "unist-util-visit": "5.0.0",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@types/mdast": "4.0.4"
+  }
+}

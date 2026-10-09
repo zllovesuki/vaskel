@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "paths": {
+      "@tests/shared/*": ["../../tests/helpers/*"],
+      "@tests/*": ["./tests/*"]
+    },
+    "lib": ["ES2023"],
+    "types": ["node"]
+  },
+  "include": ["vitest.config.ts", "tools", "tests"]
+}

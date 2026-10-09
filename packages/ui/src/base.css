@@ -1,0 +1,148 @@
+/*
+ * IBM Plex Sans and Plex Mono draw every script's Latin from the first paint,
+ * so they load with the application styles; the CJK faces follow in
+ * fonts.css. Code takes the regular Text weight, SemiBold and Bold.
+ */
+@import "@ibm/plex-sans-variable/fonts/split/woff2/IBM Plex Sans Var-Roman.css";
+@import "@ibm/plex-sans-variable/fonts/split/woff2/IBM Plex Sans Var-Italic.css";
+@import "@ibm/plex-mono/fonts/split/woff2/IBMPlexMono-Text.css";
+@import "@ibm/plex-mono/fonts/split/woff2/IBMPlexMono-SemiBold.css";
+@import "@ibm/plex-mono/fonts/split/woff2/IBMPlexMono-Bold.css";
+
+@layer base {
+  :root {
+    color: var(--color-ink);
+    background: var(--color-page);
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-normal);
+    font-synthesis: none;
+    -webkit-font-smoothing: antialiased;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  /*
+   * The language in effect picks the regional CJK family. Shared Han
+   * codepoints take their glyph forms from the first font that has them, so
+   * a Traditional Chinese or Japanese reader must never be served the
+   * Simplified family first; the other regions' Plyra faces only supply
+   * characters the reader's own face lacks. Until fonts.css and its slices
+   * arrive, and offline without them, the generic family draws CJK text in
+   * the device's own font for the language in effect. The document language
+   * sets it for the app; a subtree with its own `lang` (a language option, an
+   * embedded preview) switches the same way.
+   */
+  :lang(zh-Hant) {
+    --font-sans:
+      "IBM Plex Sans Var", "Plyra Sans TC", "Plyra Sans SC", "Plyra Sans JP",
+      sans-serif;
+  }
+  :lang(zh-Hans) {
+    --font-sans:
+      "IBM Plex Sans Var", "Plyra Sans SC", "Plyra Sans TC", "Plyra Sans JP",
+      sans-serif;
+  }
+  :lang(ja) {
+    --font-sans:
+      "IBM Plex Sans Var", "Plyra Sans JP", "Plyra Sans TC", "Plyra Sans SC",
+      sans-serif;
+  }
+  /* CJK interface text: a 13 px floor for fine print. Tracking is zeroed below. */
+  :is(:lang(zh), :lang(ja)) {
+    --text-fine: 0.866667rem;
+  }
+  /* Touch screens get the larger target; spacing derived from it follows. */
+  @media (pointer: coarse) {
+    :root {
+      --spacing-target: var(--spacing-control-touch);
+    }
+  }
+  body {
+    min-width: 320px;
+  }
+  /*
+   * Visually hidden labels are absolutely positioned. The control carrying one
+   * must be its containing block, or the label escapes the nearest scroller
+   * and stretches the page into a phantom scroll region.
+   */
+  :is(a, button, [role="button"], label, summary):has(.sr-only) {
+    position: relative;
+  }
+  button,
+  a,
+  input,
+  textarea,
+  select {
+    -webkit-tap-highlight-color: transparent;
+  }
+  button {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  a {
+    color: var(--color-accent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  :is(button, a, input, textarea, select, [tabindex]):focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+  h1 {
+    font-size: 1.8rem;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    font-weight: 700;
+  }
+  h2 {
+    font-size: 1.1rem;
+    line-height: 1.35;
+    font-weight: 650;
+    letter-spacing: -0.02em;
+  }
+  hr {
+    border-top: 1px solid var(--color-line);
+    margin-block: 1.25rem;
+  }
+  textarea {
+    resize: vertical;
+  }
+  /*
+   * Reduced motion keeps colour and opacity changes, which carry state, and
+   * drops travel, scaling and rotation. Keyframe animations end at once and
+   * once: an infinite loop at a near-zero duration samples a new frame every
+   * paint and flickers instead of standing still.
+   */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+      transition-property:
+        color, background-color, border-color, outline-color,
+        text-decoration-color, fill, stroke, opacity, box-shadow !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+    }
+  }
+  /* A theme switch lands in one frame instead of easing some colours. */
+  :root[data-theme-switching] *,
+  :root[data-theme-switching] *::before,
+  :root[data-theme-switching] *::after {
+    transition: none !important;
+  }
+}
+
+/*
+ * Unlayered on purpose: these must win over base, component and utility
+ * tracking alike. Letter-spacing spaces CJK glyphs apart, and uppercase does
+ * nothing to them, so both are switched off by the language in effect.
+ */
+:is(h1, h2, .tracking-tight, .section-label):is(:lang(zh), :lang(ja)) {
+  letter-spacing: 0;
+}
+.section-label:is(:lang(zh), :lang(ja)) {
+  text-transform: none;
+}
