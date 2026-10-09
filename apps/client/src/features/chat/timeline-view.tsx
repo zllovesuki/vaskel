@@ -32,6 +32,8 @@ import { TimelineDivider } from "@vaskel/ui/components/room";
 const GROUP_WINDOW = 5 * 60_000;
 /** The floating jump control's height plus its inset from the bottom edge. */
 const JUMP_CLEARANCE = 56;
+/** A row's height before measurement; the opening offset counts from it. */
+const ROW_ESTIMATE = 72;
 
 function dayKey(value: number) {
   const date = new Date(value);
@@ -112,7 +114,7 @@ export function TimelineView({
   const virtualizer = useVirtualizer({
     count: messages.length,
     getScrollElement: () => scroll.current,
-    estimateSize: () => 72,
+    estimateSize: () => ROW_ESTIMATE,
     getItemKey: (index) => messages[index]?.id ?? index,
     overscan: 8,
     paddingStart: loadEarlier ? 40 : 0,
@@ -122,6 +124,12 @@ export function TimelineView({
     anchorTo: "end",
     followOnAppend: mode === "following",
     scrollEndThreshold: 100,
+    // Virtual trusts the offset it last observed, or this value until a scroll
+    // event arrives, and reads it once. The opening scroll issued below stays
+    // unknown to it until the next frame, and StrictMode's effect replay in
+    // that frame restores the offset it knows. Opening at the estimated end
+    // instead also makes the latest rows the first ones Virtual mounts.
+    initialOffset: mode === "following" ? messages.length * ROW_ESTIMATE : 0,
   });
   const total = virtualizer.getTotalSize();
   function captureBoundary() {

@@ -245,8 +245,10 @@ the person has since scrolled to. An around response merges reads/observations
 monotonically without inventing replay progress. Native Virtual anchoring
 preserves prepend/trim geometry; preserve the boundary-row decoration correction
 and measured-size pruning when upgrading the virtualizer. The application chooses
-the scroll destination; the virtualizer owns convergence as rows measure. Accepted
-navigation requests alignment independently of reading mode and highlight timing.
+the scroll destination, seeding the virtualizer's opening offset rather than
+scrolling behind its back; the virtualizer owns convergence as rows measure.
+Accepted navigation requests alignment independently of reading mode and
+highlight timing.
 A viewport resize requests the end only while following; it must not leave a
 second adjustment loop that can override a later message jump. Exact-original
 dialogs are independent of the resident range.
