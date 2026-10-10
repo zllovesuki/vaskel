@@ -6,7 +6,7 @@
       "@tests/*": ["./tests/*"],
       "@/server/*": ["./src/*"]
     },
-    "lib": ["ES2023"],
+    "lib": ["ES2023", "ESNext.Disposable"],
     "types": ["@cloudflare/vitest-plugin/types", "node/async_hooks"],
     // Vitest/tinybench and MSW browser declarations conflict with Workers globals.
     // Worker and fixture checks separately validate generated/runtime declarations.

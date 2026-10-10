@@ -6,7 +6,7 @@
       "@tests/*": ["./tests/*"],
       "@/server/*": ["./src/*"]
     },
-    "lib": ["ES2023"],
+    "lib": ["ES2023", "ESNext.Disposable"],
     "types": ["@cloudflare/vitest-plugin/types", "node/async_hooks"]
   },
   "include": ["tests/fixtures", "worker-configuration.d.ts", "src"]

@@ -8,9 +8,3 @@ declare namespace Cloudflare {
     TEST_MIGRATIONS: import("cloudflare:test").D1Migration[];
   }
 }
-
-// The fixture module rule serves plain SQL imports as text.
-declare module "*.sql" {
-  const value: string;
-  export default value;
-}

@@ -509,11 +509,10 @@ it.each(["during-discovery", "work-budget"] as const)(
     );
     const principal = identity(operator.profile!.userId);
     const now = Date.now();
-    let clock: ReturnType<typeof vi.spyOn> | undefined;
+    // Keep spy setup time from moving the deadline beyond the 1 ms boundary.
+    const clock = vi.spyOn(Date, "now").mockReturnValue(now);
     const lookup = directoryWait(session, async () => {
-      clock = vi
-        .spyOn(Date, "now")
-        .mockReturnValue(now + (stage === "work-budget" ? 5_001 : 30_001));
+      clock.mockReturnValue(now + (stage === "work-budget" ? 5_001 : 30_001));
     });
     const candidate = vi.fn(async () => ({
       kind: "presence_candidates",
@@ -543,7 +542,7 @@ it.each(["during-discovery", "work-budget"] as const)(
       );
       expect(candidate).not.toHaveBeenCalled();
     } finally {
-      clock?.mockRestore();
+      clock.mockRestore();
       lookup.mockRestore();
       dispatch.mockRestore();
     }
