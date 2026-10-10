@@ -1,4 +1,4 @@
-import { Plus, Settings2 } from "lucide-react";
+import { Ellipsis, Plus } from "lucide-react";
 import { Avatar } from "@vaskel/ui/components/avatar";
 import {
   buttonStyles,
@@ -146,16 +146,7 @@ export function Home({
                 })}
                 inert
               >
-                <Settings2 className="size-4" aria-hidden="true" />
-              </span>
-              <span
-                className={buttonStyles({
-                  variant: "muted",
-                  size: "icon-small",
-                })}
-                inert
-              >
-                <Plus className="size-4" aria-hidden="true" />
+                <Ellipsis className="size-4" aria-hidden="true" />
               </span>
             </CircleHeader>
             <nav aria-label={`${circle.name} rooms`}>

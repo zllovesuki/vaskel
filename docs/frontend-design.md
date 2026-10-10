@@ -55,10 +55,14 @@ actions aligned across notices.
 ## Home and navigation
 
 Home contains account/search controls, authorized live calls, the Unread inbox,
-collapsible circles with People/rooms, then DMs. Desktop places Home beside the
-selected page. There is no separate icon rail, roster column or corner account
-panel. Presence describes other people; an empty room should not count the
-viewer as company.
+collapsible circles with People/rooms, then DMs. A live call's card gives each
+line the card's width: the room, its circle and whether the viewer is in it; who
+is there and for how long; who is sharing; and Join on its own row when offered.
+A circle the viewer owns keeps its settings and Add a room behind one menu on
+the circle's row, so the name wraps before anything truncates. Desktop places
+Home beside the selected page. There is no separate icon rail, roster column or
+corner account panel. Presence describes other people; an empty room should not
+count the viewer as company.
 
 Without a destination, restore this account's last local destination only after
 validating it against the current directory, otherwise choose the first
@@ -152,7 +156,8 @@ edits/confirmations retain native order. Message actions use a dedicated
 floating menu with no repeated metadata header; portal focus keeps the source
 row highlighted. Trigger/menu opening must not change row height or scroll.
 Preserve native touch selection, scrolling and child controls. Narrow headers
-truncate with full text available in titles.
+truncate with full text available in titles; on phones the presence strip keeps
+only its glyph and avatars, so the room name wins.
 
 Reactions use the shared fixed emoji palette, compact rectangular chips, an
 accent outline for the viewer's selections and dim pending toggles. Toolbar and

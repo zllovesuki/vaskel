@@ -81,12 +81,20 @@ function MessageFile({
           }
         />
       )}
-      <div className="flex flex-wrap items-center gap-x-2 py-1 pr-1 pl-3">
+      {/* One row: the name gives way before the size and the actions do. */}
+      <div className="flex items-center gap-x-2 py-1 pr-1 pl-3">
         <Paperclip className="size-4 shrink-0 text-muted" aria-hidden="true" />
-        <div className="min-w-0 flex-1 basis-28 py-1">
-          <p className="text-ui font-medium wrap-anywhere">{file.filename}</p>
-          <p className="text-fine text-muted">
-            {formatFileSize(file.byteLength)}
+        <div className="min-w-0 flex-1 py-1">
+          <p className="flex min-w-0 items-baseline gap-x-2">
+            <span
+              className="truncate text-ui font-medium"
+              title={file.filename}
+            >
+              {file.filename}
+            </span>
+            <span className="shrink-0 text-fine text-muted">
+              {formatFileSize(file.byteLength)}
+            </span>
           </p>
           {online && previewKind !== "image" && grant.failed && (
             <Unavailable

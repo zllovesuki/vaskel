@@ -412,7 +412,10 @@ export function CircleHeader({
               {initial}
             </span>
             <span className="min-w-0 flex-1">
-              <span className="block truncate font-semibold" title={name}>
+              <span
+                className="line-clamp-2 font-semibold wrap-anywhere"
+                title={name}
+              >
                 {name}
               </span>
               {detail !== undefined && (
@@ -449,9 +452,10 @@ export function CircleUnreadCount({
 }
 
 /**
- * A live voice room in Happening now: who is there, where it is, how long
- * it has run and who is sharing. The room name underlines like the room
- * names in the dock and the phone strip.
+ * A live voice room in Happening now: the room, where it is and whether
+ * the viewer is in it, then who is there and for how long, then who is
+ * sharing. The room name underlines like the room names in the dock and
+ * the phone strip.
  */
 export function LiveCallCard({
   render,
@@ -480,68 +484,66 @@ export function LiveCallCard({
   join?: ReactNode;
 }) {
   return (
-    <div className="flex items-center gap-2.5 rounded-lg bg-stage px-3 py-2.5 text-stage-ink shadow-row">
+    <div className="flex flex-col gap-2 rounded-lg bg-stage px-3 py-2.5 text-stage-ink shadow-row">
+      {/* The whole card opens the room. Each line has the card's width: the
+          room and the viewer's own state, then who is there, then who shares.
+          Join, when offered, takes a row of its own. */}
       {render({
         className:
-          "group flex min-w-0 flex-1 items-center gap-2.5 text-stage-ink no-underline",
+          "group block min-w-0 leading-tight text-stage-ink no-underline",
         children: (
           <>
-            <span className="flex shrink-0 -space-x-1.5" aria-hidden="true">
-              {people.map((person, index) => (
-                <Avatar
-                  key={index}
-                  name={person.name}
-                  hue={person.hue}
-                  size={6}
-                  className="ring-2 ring-stage"
-                />
-              ))}
-              {more !== undefined && (
-                <span className="grid size-6 place-items-center rounded-[30%] bg-stage-raised text-fine font-semibold ring-2 ring-stage">
-                  +{more}
+            <span className="flex items-center gap-1.5 text-ui font-semibold">
+              <Volume2
+                className="size-3.5 shrink-0 text-live"
+                aria-hidden="true"
+              />
+              <span className="truncate group-hover:underline group-active:underline">
+                {room}
+              </span>
+              {place !== undefined && (
+                <span className="truncate font-normal text-stage-muted">
+                  · {place}
+                </span>
+              )}
+              {youAreIn !== undefined && (
+                <span className="ml-auto shrink-0 pl-2 text-caption font-semibold text-live">
+                  {youAreIn}
                 </span>
               )}
             </span>
-            <span className="min-w-0 flex-1 leading-tight">
-              <span className="flex items-center gap-1.5 text-ui font-semibold">
-                <Volume2
-                  className="size-3.5 shrink-0 text-live"
-                  aria-hidden="true"
-                />
-                <span className="truncate group-hover:underline group-active:underline">
-                  {room}
-                </span>
-                {place !== undefined && (
-                  <span className="truncate font-normal text-stage-muted">
-                    · {place}
+            <span className="mt-1.5 flex items-center gap-2 text-caption text-stage-muted">
+              <span className="flex shrink-0 -space-x-1.5" aria-hidden="true">
+                {people.map((person, index) => (
+                  <Avatar
+                    key={index}
+                    name={person.name}
+                    hue={person.hue}
+                    size={5}
+                    className="ring-2 ring-stage"
+                  />
+                ))}
+                {more !== undefined && (
+                  <span className="grid size-5 place-items-center rounded-[30%] bg-stage-raised text-[10px] font-semibold ring-2 ring-stage">
+                    +{more}
                   </span>
                 )}
               </span>
-              <span className="block truncate text-caption text-stage-muted">
+              <span className="truncate">
                 {inCall}
                 {duration ? ` · ${duration}` : ""}
-                {sharing !== undefined && (
-                  <>
-                    {" · "}
-                    <ScreenShare
-                      className="inline size-3.5 align-[-2px]"
-                      aria-hidden="true"
-                    />{" "}
-                    {sharing}
-                  </>
-                )}
               </span>
             </span>
+            {sharing !== undefined && (
+              <span className="mt-1 flex items-center gap-1.5 text-caption text-stage-muted">
+                <ScreenShare className="size-3.5 shrink-0" aria-hidden="true" />
+                <span className="truncate">{sharing}</span>
+              </span>
+            )}
           </>
         ),
       })}
-      {youAreIn !== undefined ? (
-        <span className="shrink-0 text-caption font-semibold text-live">
-          {youAreIn}
-        </span>
-      ) : (
-        join
-      )}
+      {youAreIn === undefined && join}
     </div>
   );
 }

@@ -351,6 +351,7 @@
   "workspace.new": "New",
   "workspace.isSharing": "{name} is sharing",
   "workspace.circleSettings": "Circle settings",
+  "workspace.circleActions": "Circle actions",
   "workspace.yourVaskel": "Your vaskel.",
   "workspace.hostSettings": "Host settings",
   "workspace.ownerOnly": "Only the owner can change these settings.",

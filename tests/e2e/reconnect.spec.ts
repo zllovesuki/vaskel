@@ -11,12 +11,23 @@ test("reconnect preserves the conversation, draft and navigation while waiting f
 }) => {
   const room = await app.room("Fresh snapshot");
   const message = await app.send(app.owner, room, "Still here offline");
-  await app.open(page, app.member, roomPath(room));
+  await app.open(page, app.owner, roomPath(room));
   await expect(page.getByText(message.body!, { exact: true })).toBeVisible();
   const composer = page.getByRole("textbox", { name: /^Message / });
   await composer.fill("Keep this authored draft");
   await context.setOffline(true);
   await expect(page.getByText(connectionLost)).toBeVisible();
+  const circleActions = page.getByRole("button", {
+    name: "Circle actions",
+    exact: true,
+  });
+  const circleSettings = page.getByRole("menuitem", {
+    name: "Circle settings",
+    exact: true,
+  });
+  await circleActions.click();
+  await expect(circleSettings).toBeDisabled();
+  await page.keyboard.press("Escape");
   await expect(page.getByText(message.body!, { exact: true })).toBeVisible();
   await expect(composer).toHaveValue("Keep this authored draft");
   await expect(page.locator("[data-skeleton]")).toHaveCount(0);
@@ -40,6 +51,8 @@ test("reconnect preserves the conversation, draft and navigation while waiting f
     page.getByRole("link", { name: `${room.name} Draft`, exact: true }),
   ).toBeVisible();
   await expect(page.locator("[data-skeleton]")).toHaveCount(0);
+  await circleActions.click();
+  await expect(circleSettings).toBeEnabled();
 });
 
 test("a failed reconnect snapshot keeps messages and the draft with local Retry", async ({

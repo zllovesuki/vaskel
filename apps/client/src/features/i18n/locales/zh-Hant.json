@@ -351,6 +351,7 @@
   "workspace.new": "新",
   "workspace.isSharing": "{name} 正在分享畫面",
   "workspace.circleSettings": "圈子設定",
+  "workspace.circleActions": "圈子操作",
   "workspace.yourVaskel": "你的 vaskel.",
   "workspace.hostSettings": "站長設定",
   "workspace.ownerOnly": "只有圈主可以變更這些設定。",

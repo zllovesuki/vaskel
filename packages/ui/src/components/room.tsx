@@ -5,6 +5,7 @@ import {
   Hash,
   Reply,
   RotateCcw,
+  Users,
   Volume2,
 } from "lucide-react";
 import { Avatar, type Hue } from "./avatar";
@@ -131,7 +132,7 @@ export function PresenceStrip({
     className: buttonStyles({
       variant: "quiet",
       size: "small",
-      className: "group max-sm:px-2 sm:px-2.5",
+      className: "group relative max-sm:px-2 sm:px-2.5",
     }),
     children: (
       <>
@@ -147,7 +148,15 @@ export function PresenceStrip({
             />
           ))}
         </span>
-        <span className="text-caption font-medium text-muted">{label}</span>
+        {/* A phone header has no room for the count in words, so the people
+            glyph stands for it there and the words stay for screen readers. */}
+        <Users
+          className="size-4 shrink-0 text-muted sm:hidden"
+          aria-hidden="true"
+        />
+        <span className="text-caption font-medium text-muted max-sm:sr-only">
+          {label}
+        </span>
       </>
     ),
   });

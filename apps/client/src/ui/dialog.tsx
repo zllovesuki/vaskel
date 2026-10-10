@@ -73,6 +73,10 @@ export function ModalDialog({
         event.preventDefault();
         close();
       }}
+      onKeyDown={(event) => {
+        // Portals bubble through React parents; Escape belongs to the dialog.
+        if (event.key === "Escape") event.stopPropagation();
+      }}
       onClick={(event) => {
         if (stage || event.target !== event.currentTarget) return;
         const box = event.currentTarget.getBoundingClientRect();

@@ -1,7 +1,7 @@
 import { usePresence } from "@/client/features/presence/use-presence";
 import { DraftBadge } from "@/client/features/drafts/badge";
 import { useId, useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { Plus, Settings2, Sparkles, X } from "lucide-react";
 import { membersOptions } from "@/client/api/members";
@@ -26,7 +26,8 @@ import {
   PeopleRow,
   UnreadMark,
 } from "@vaskel/ui/components/home";
-import { DialogButton } from "@/client/ui/dialog";
+import { ActionsMenu } from "@/client/ui/actions-menu";
+import { ModalDialog } from "@/client/ui/dialog";
 
 /**
  * Current and new circles open automatically; only a deliberate expansion
@@ -78,6 +79,8 @@ export function ServerNavigation({
   const [expanded, setExpanded] = useState(
     () => current || newToYou || readExpanded().includes(resource.owner.id),
   );
+  const [adding, setAdding] = useState(false);
+  const navigate = useNavigate();
   // Arriving in a circle, or learning it is new to you, opens its section;
   // other circles keep their state, and a later manual collapse stands.
   const [arrival, setArrival] = useState({ current, newToYou });
@@ -166,41 +169,49 @@ export function ServerNavigation({
           )
         }
       >
+        {/* One control for the owner's two actions leaves the name its width. */}
         {resource.role === "owner" && (
-          <Link
-            to="/servers/$serverId/settings"
-            params={{ serverId: resource.owner.id }}
-            search={{}}
-            className={buttonStyles({
-              variant: "muted",
-              size: "icon-small",
-            })}
-            aria-current={settingsActive ? "page" : undefined}
-            title={t("workspace.circleSettings")}
-            onClick={onNavigate}
-          >
-            <Settings2 className="size-4" aria-hidden="true" />
-            <span className="sr-only">{t("workspace.circleSettings")}</span>
-          </Link>
-        )}
-        {resource.role === "owner" && (
-          <DialogButton
-            label={
-              <>
-                <Plus className="size-4" aria-hidden="true" />
-                <span className="sr-only">
-                  {t("workspace.addVoiceChannel")}
-                </span>
-              </>
-            }
+          <ActionsMenu
+            label={t("workspace.circleActions")}
+            buttonLabel={t("workspace.circleActions")}
+            items={[
+              {
+                id: "settings",
+                label: t("workspace.circleSettings"),
+                icon: <Settings2 className="size-4" aria-hidden="true" />,
+                disabled: !canUseNetwork,
+                onSelect: () => {
+                  onNavigate();
+                  void navigate({
+                    to: "/servers/$serverId/settings",
+                    params: { serverId: resource.owner.id },
+                    search: {},
+                  });
+                },
+              },
+              {
+                id: "add",
+                label: t("workspace.addVoiceChannel"),
+                icon: <Plus className="size-4" aria-hidden="true" />,
+                onSelect: () => setAdding(true),
+              },
+            ]}
             buttonClass={buttonStyles({
               variant: "muted",
               size: "icon-small",
             })}
+          />
+        )}
+        {adding && (
+          <ModalDialog
             title={t("workspace.createRoomTitle", { name: resource.name })}
+            close={() => setAdding(false)}
           >
-            {(close) => <NewChannelForm resource={resource} close={close} />}
-          </DialogButton>
+            <NewChannelForm
+              resource={resource}
+              close={() => setAdding(false)}
+            />
+          </ModalDialog>
         )}
       </CircleHeader>
       <nav

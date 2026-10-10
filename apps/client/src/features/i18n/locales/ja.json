@@ -351,6 +351,7 @@
   "workspace.new": "新着",
   "workspace.isSharing": "{name} が画面共有中",
   "workspace.circleSettings": "サークル設定",
+  "workspace.circleActions": "サークルの操作",
   "workspace.yourVaskel": "あなたの vaskel.",
   "workspace.hostSettings": "管理人の設定",
   "workspace.ownerOnly": "この設定を変更できるのは主催者だけです。",

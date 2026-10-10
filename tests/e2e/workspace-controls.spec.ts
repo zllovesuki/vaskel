@@ -276,6 +276,25 @@ test("mobile navigation restores focus on every workspace surface", async ({
   const voice = await app.room("Navigation voice room", "media");
   await app.open(page, app.owner, roomPath(app.circle));
   await page.setViewportSize({ width: 390, height: 844 });
+  await page
+    .getByRole("button", { name: "Open conversations", exact: true })
+    .click();
+  const circleActions = page.getByRole("button", {
+    name: "Circle actions",
+    exact: true,
+  });
+  await circleActions.click();
+  await page.getByRole("menuitem", { name: "Add a room", exact: true }).click();
+  const dialog = page.getByRole("dialog", {
+    name: "Create a room in Browser Circle",
+    exact: true,
+  });
+  await expect(
+    dialog.getByRole("textbox", { name: "Room name" }),
+  ).toBeFocused();
+  await page.keyboard.press("Escape");
+  await expect(dialog).toHaveCount(0);
+  await expect(circleActions).toBeFocused();
   for (const path of [
     roomPath(app.circle),
     roomPath(voice),
