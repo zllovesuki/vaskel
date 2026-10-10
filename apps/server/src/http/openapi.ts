@@ -10,7 +10,7 @@ export function generateOpenAPI() {
   return generator.generate(apiContract, {
     info: {
       title: "vaskel. HTTP API",
-      version: "0.1.0",
+      version: "0.1.1",
       description:
         "Session cookies authenticate requests. Unsafe requests require this instance's Origin. X-Vaskel-Expected-Account is a refusal-only account precondition, not a credential. WebSocket upgrades and native byte/stream transports are described in the synchronization and attachment guides.",
     },

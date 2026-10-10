@@ -252,12 +252,13 @@ separate policy.
 
 ## Upgrades and supported tooling
 
-Starting with `v0.1.0`, forward upgrades preserve the data required by the product
-policies. Earlier development data follows the
-[reset policy](../IMPLEMENTATION.md#development-compatibility). Keep released
-migration files unchanged and add migrations for later schema changes, including
-browser storage changes that require them. Storage resets are not an upgrade
-procedure. Each later release identifies the source versions it supports upgrading.
+Forward upgrades preserve the data required by the product policies. Disposable
+development state follows the
+[reset procedure](../IMPLEMENTATION.md#reset-local-data). Keep released migration
+files unchanged and add migrations for later schema changes, including browser
+storage changes that require them. Storage resets are not an upgrade procedure.
+Each release identifies supported source versions in its
+[release notes](https://github.com/zllovesuki/vaskel/releases).
 
 Apply pending identity migrations before [deploying the Worker and browser assets](#deployment-commands).
 Actors apply their pending [schema migrations](engineering.md#schemas-and-migrations)

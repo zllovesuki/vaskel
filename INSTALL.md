@@ -9,7 +9,7 @@ and verifies their email. The agent handles the tools, configuration and
 deployment. One instance serves the browser app, every circle and all direct
 messages.
 
-These instructions target **v0.1.0**. If that tag is not available yet, report
+These instructions target **v0.1.1**. If that tag is not available yet, report
 that the release has not been published; do not substitute a development branch.
 To upgrade a working instance, follow the
 [upgrade procedure](https://github.com/zllovesuki/vaskel/blob/release/docs/operations.md#upgrades-and-supported-tooling)
@@ -48,7 +48,7 @@ Return to earlier steps only to fix a failed check or complete missing setup.
    (11.1.0 for this release). Help install missing tools. For a new installation:
 
    ```sh
-   git clone --branch v0.1.0 https://github.com/zllovesuki/vaskel.git vaskel
+   git clone --branch v0.1.1 https://github.com/zllovesuki/vaskel.git vaskel
    cd vaskel
    git switch -c instance
    pnpm install --frozen-lockfile --ignore-scripts
@@ -259,7 +259,7 @@ Return to earlier steps only to fix a failed check or complete missing setup.
    Apply only pending migrations; do not reset existing storage. The unchanged
    release's schema is covered by release validation. If authentication code,
    Better Auth or the identity schema was customized, first run the
-   [auth-schema check](https://github.com/zllovesuki/vaskel/blob/v0.1.0/IMPLEMENTATION.md#validation).
+   [auth-schema check](https://github.com/zllovesuki/vaskel/blob/v0.1.1/IMPLEMENTATION.md#validation).
 
    When ready to deploy a new instance, set
    `vars.OPERATOR_BOOTSTRAP_EXPIRES_AT` to an ISO timestamp one hour ahead.

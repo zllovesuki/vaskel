@@ -179,11 +179,11 @@ semantics.
 
 ## Schemas and migrations
 
-Each SQL owner has an ordered development baseline split by responsibility.
-Keep a table's indexes and seed rows beside its definition, with one column per
-line. Small schemas with one responsibility can remain in one file; file
-boundaries are for reading and ownership, not one file per table or historical
-feature change.
+Each SQL owner has an ordered migration history. Its initial baseline is split
+by responsibility. Keep a table's indexes and seed rows beside its definition,
+with one column per line. Small schemas with one responsibility can remain in
+one file; file boundaries are for reading and ownership, not one file per table
+or historical feature change.
 
 [Identity D1](../apps/server/migrations/d1) groups identity, account lifecycle, directory and
 instance administration. [Message owners](../apps/server/src/actors/shared/migrations)
@@ -202,19 +202,20 @@ migration baseline and deployment migration step own compatibility checking.
 
 D1 uses Wrangler's numbered migration files. Each actor explicitly lists its
 SQL files in order; `migrateActorStorage` applies all pending files and their
-ledger entries in one native transaction. Renumbering or renaming baseline
-files requires fresh storage, and editing an applied file does not rerun it.
-The validator rejects newer ledgers; recovery builds must retain registrations
-for migrations already applied.
-These are initial schema sections, not a supported upgrade history. Edit the
-relevant section and reset development storage under
-[the compatibility policy](../IMPLEMENTATION.md#development-compatibility).
+ledger entries in one native transaction. Editing an applied file does not
+rerun it. The validator rejects newer ledgers; recovery builds must retain
+registrations for migrations already applied.
+Released migration identities and SQL remain unchanged; append schema changes
+under the [upgrade policy](operations.md#upgrades-and-supported-tooling).
+[Development compatibility](../IMPLEMENTATION.md#development-compatibility)
+covers disposable development state.
 
 Wrangler actor namespace/class declarations are separate from SQL versions.
-Preserve stable object identities within a development baseline, including the
-[event-dispatch partition count](#event-dispatch-sizing). Deployment or actor
-eviction does not reset stored schemas. Fixture migrations test transaction
-failure boundaries and do not establish a released upgrade policy.
+Changing those identities, including the
+[event-dispatch partition count](#event-dispatch-sizing), needs a data-preserving
+migration for released installations. Deployment or actor eviction does not reset
+stored schemas. Fixture migrations test transaction failure boundaries and do not
+establish a released upgrade policy.
 
 Use indexed message rows, explicit FTS, receipts and bounded replay;
 whole-object serialization is not the history model. Search analysis changes
@@ -231,8 +232,9 @@ accounts with eight sockets each and explicit refusal under skew. The prototype
 omitted production identity/session work and lifecycle alarms, so it does not
 establish deployed capacity, regional placement or billing. The
 [executable limits](../apps/server/src/event-dispatch/limits.ts) own
-partition, connection, ticket and batch bounds. A partition-count change needs
-fresh development state because it changes where account sockets and fences live.
+partition, connection, ticket and batch bounds. Changing the partition count
+changes where account sockets and fences live; disposable experiments need fresh
+state, while released installations need a migration.
 
 ## TypeScript and tooling
 

@@ -1,15 +1,15 @@
 # Release preparation
 
-The initial `v0.1.0` release is for personal use with friends. Upgrade and
+Releases currently target personal use with friends. Upgrade and
 downgrade support follow the [upgrade policy](operations.md#upgrades-and-supported-tooling).
 
 ## Remaining acceptance
 
 Confirm passing results from the [existing local checks](../IMPLEMENTATION.md#validation)
 for the chosen revision, then follow the
-[publication workflow](../AGENTS.md#git-workflow). The installation guide
-targets the `v0.1.0` tag; publish that tag before deploying the updated website
-and its copy of [INSTALL.md](../INSTALL.md).
+[publication workflow](../AGENTS.md#git-workflow). Publish the tag pinned by the
+installation guide before deploying the updated website and its copy of
+[INSTALL.md](../INSTALL.md).
 
 Wider device coverage and workload measurements can follow actual use.
 

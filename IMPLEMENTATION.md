@@ -37,17 +37,14 @@ The separate landing page runs with `pnpm run dev:site` and builds with
 
 ## Development compatibility
 
-There is no released client/schema compatibility baseline yet. Until `v0.1.0`,
-producers, schemas and consumers evolve together. Required fields describe the
-current behavior; development changes do not need fallback readers or staged
-rollouts.
-
-Before that release, local and staging data are disposable. Edit the relevant
-baseline files and reset affected storage rather than maintaining migrations for
-development data. This applies to browser storage too. Starting with `v0.1.0`,
-follow the [data-preserving upgrade policy](docs/operations.md#upgrades-and-supported-tooling)
-and preserve released migration files.
+Develop schema changes against the
+[data-preserving upgrade policy](docs/operations.md#upgrades-and-supported-tooling).
+Add migrations instead of editing, renaming or renumbering released files.
 [Engineering](docs/engineering.md#schemas-and-migrations) explains the schema layout.
+
+Local and staging data used only for development may be discarded, including
+browser storage. Use the reset procedure below only for those disposable
+environments.
 
 ### Reset local data
 
@@ -57,13 +54,14 @@ calls and files, and recreates D1 from the baseline. Actors initialize their
 schemas on first use. Renew the bootstrap expiry for a new local host.
 
 Keep `apps/server/.dev.vars` and proof archives outside the state directory.
-Leave any root `.wrangler/state/` untouched. Editing, renaming or regrouping an
-already-applied baseline requires this reset; applying migrations over old
-storage does not reconstruct it.
+Leave any root `.wrangler/state/` untouched. Changing already-applied unpublished
+migrations requires this reset; applying migrations over old storage does not
+reconstruct it.
 
-Staging schema or actor-identity changes can also require fresh cloud resources
-before a separately authorized deployment. A rollback across those changes
-needs matching storage. Storage resets do not require regenerating credentials.
+Disposable staging experiments with schema or actor-identity changes can also
+require fresh cloud resources before a separately authorized deployment. A
+rollback across those changes needs matching storage. Storage resets do not
+require regenerating credentials.
 
 ## Working on the code
 
