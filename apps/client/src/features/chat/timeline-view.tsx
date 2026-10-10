@@ -4,6 +4,7 @@ import { PendingLabel } from "@/client/ui/loading-skeleton";
 import { useI18n } from "@/client/features/i18n/use-i18n";
 import { Hash, MessageCircle } from "lucide-react";
 import {
+  useCallback,
   useEffect,
   useId,
   useLayoutEffect,
@@ -11,7 +12,11 @@ import {
   useRef,
   useState,
 } from "react";
-import { useVirtualizer } from "@tanstack/react-virtual";
+import {
+  elementScroll,
+  observeElementOffset,
+  useVirtualizer,
+} from "@tanstack/react-virtual";
 import type { Message, OwnerScope } from "@vaskel/contracts/messaging";
 import { MessageRow } from "@/client/features/chat/message-row";
 import type {
@@ -90,7 +95,39 @@ export function TimelineView({
     [language],
   );
   const scroll = useRef<HTMLDivElement>(null);
+  const reportOffset = useRef<
+    ((offset: number, scrolling: boolean) => void) | null
+  >(null);
+  const [scrollMargin, setScrollMargin] = useState(0);
+  const placement = timelineIntroPlacement({
+    intro,
+    loadEarlier,
+    messageCount: messages.length,
+  });
+  const listRef = useCallback(
+    (element: HTMLDivElement | null) => {
+      if (!element) return;
+      const viewport = element.closest<HTMLElement>("[data-message-count]")!;
+      // Row offsets start inside the list, after the intro and any alignment
+      // space. Virtual needs that origin in the scroll viewport's coordinates.
+      const measure = () =>
+        setScrollMargin(
+          element.getBoundingClientRect().top -
+            viewport.getBoundingClientRect().top +
+            viewport.scrollTop,
+        );
+      measure();
+      const observer = new ResizeObserver(measure);
+      observer.observe(viewport);
+      observer.observe(element);
+      if (placement === "leading" && element.previousElementSibling)
+        observer.observe(element.previousElementSibling);
+      return () => observer.disconnect();
+    },
+    [placement],
+  );
   const positioned = useRef<"initial" | number | null>(null);
+  const focused = useRef<number | null>(null);
   // Highlight expiry changes presentation only; it never consumes a navigation.
   const [expiredHighlight, setExpiredHighlight] = useState<number | null>(null);
   const highlightedSequence =
@@ -114,6 +151,25 @@ export function TimelineView({
   const virtualizer = useVirtualizer({
     count: messages.length,
     getScrollElement: () => scroll.current,
+    observeElementOffset: (instance, report) => {
+      reportOffset.current = report;
+      const unsubscribe = observeElementOffset(instance, report);
+      return () => {
+        reportOffset.current = null;
+        unsubscribe?.();
+      };
+    },
+    scrollToFn: (offset, options, instance) => {
+      elementScroll(offset, options, instance);
+      // Instant commands have already moved the viewport. Report that position
+      // before a later render can replay an adjustment from the previous view.
+      if (
+        options.behavior !== undefined &&
+        options.behavior !== "smooth" &&
+        instance.scrollElement
+      )
+        reportOffset.current?.(instance.scrollElement.scrollTop, false);
+    },
     estimateSize: () => ROW_ESTIMATE,
     getItemKey: (index) => messages[index]?.id ?? index,
     overscan: 8,
@@ -124,11 +180,9 @@ export function TimelineView({
     anchorTo: "end",
     followOnAppend: mode === "following",
     scrollEndThreshold: 100,
-    // Virtual trusts the offset it last observed, or this value until a scroll
-    // event arrives, and reads it once. The opening scroll issued below stays
-    // unknown to it until the next frame, and StrictMode's effect replay in
-    // that frame restores the offset it knows. Opening at the estimated end
-    // instead also makes the latest rows the first ones Virtual mounts.
+    scrollMargin,
+    // Mount the latest rows first while following. The opening scroll below
+    // aligns the real end as the viewport and rows are measured.
     initialOffset: mode === "following" ? messages.length * ROW_ESTIMATE : 0,
   });
   const total = virtualizer.getTotalSize();
@@ -148,7 +202,6 @@ export function TimelineView({
   useLayoutEffect(() => {
     const element = scroll.current;
     if (!element || !messages.length) return;
-    let focusFrame = 0;
     if (destination && destination.revision !== positioned.current) {
       if (destination.kind === "latest") virtualizer.scrollToEnd();
       else {
@@ -157,14 +210,6 @@ export function TimelineView({
         );
         if (index < 0) return;
         virtualizer.scrollToIndex(index, { align: "center" });
-        // Virtual mounts the target at its new offset before focus is applied.
-        focusFrame = requestAnimationFrame(() => {
-          element
-            .querySelector<HTMLElement>(
-              `[data-timeline-sequence="${destination.sequence}"] article`,
-            )
-            ?.focus({ preventScroll: true });
-        });
       }
       positioned.current = destination.revision;
     } else if (positioned.current === null) {
@@ -195,7 +240,6 @@ export function TimelineView({
     const retained = new Set(messages.map((message) => message.id));
     for (const key of virtualizer.itemSizeCache.keys())
       if (!retained.has(String(key))) virtualizer.itemSizeCache.delete(key);
-    return () => cancelAnimationFrame(focusFrame);
   }, [messages, mode, destination, virtualizer]);
   // The application chooses a target; Virtual alone reconciles row measurements.
   // Viewport resizing requests the end once, only while following. Leaving that
@@ -220,14 +264,24 @@ export function TimelineView({
   const { activeId } = keyboard;
   const items = virtualizer.getVirtualItems();
   const visibleIds = items.map((item) => item.key).join(",");
+  useLayoutEffect(() => {
+    if (
+      destination?.kind !== "message" ||
+      destination.revision === focused.current
+    )
+      return;
+    // Measurement can take more than one frame to mount the target. Focus
+    // follows that mount once per navigation, independently of scroll settling.
+    const article = scroll.current?.querySelector<HTMLElement>(
+      `[data-timeline-sequence="${destination.sequence}"] article`,
+    );
+    if (!article) return;
+    article.focus({ preventScroll: true });
+    focused.current = destination.revision;
+  }, [destination, visibleIds]);
   const activeMounted =
     activeId !== undefined &&
     items.some((item) => messages[item.index]?.id === activeId);
-  const placement = timelineIntroPlacement({
-    intro,
-    loadEarlier,
-    messageCount: messages.length,
-  });
   const now = Date.now();
   const today = dayKey(now);
   const previousDay = new Date(now);
@@ -293,14 +347,15 @@ export function TimelineView({
       ) : (
         <div className="flex min-h-full flex-col justify-end">
           {placement === "leading" && intro && (
-            // A plain block before the virtual container: Virtual measures rows
-            // against the scroll element, and scrolling to the end uses its
-            // actual maximum offset, so leading content shifts neither.
             <div className="flex flex-col items-start gap-2 px-page-gutter pt-6 pb-3">
               <TimelineIntroContent intro={intro} ownerId={owner.id} />
             </div>
           )}
-          <div className="relative w-full" style={{ height: total }}>
+          <div
+            ref={listRef}
+            className="relative w-full"
+            style={{ height: total }}
+          >
             {loadEarlier && (
               <div className="absolute inset-x-0 top-0 flex h-10 items-center justify-center">
                 <button
@@ -348,7 +403,9 @@ export function TimelineView({
                   data-timeline-sequence={message.createdSequence}
                   ref={virtualizer.measureElement}
                   className="absolute inset-x-0 top-0 w-full"
-                  style={{ transform: `translateY(${item.start}px)` }}
+                  style={{
+                    transform: `translateY(${item.start - scrollMargin}px)`,
+                  }}
                 >
                   <MessageRow
                     message={message}

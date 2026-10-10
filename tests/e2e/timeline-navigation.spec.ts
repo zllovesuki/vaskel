@@ -1,6 +1,52 @@
 import { test, expect, roomPath, apiPath } from "@tests/e2e/fixtures";
 import { deferred, fulfillHeld } from "@tests/e2e/helpers";
 
+test("search jumps center the selected row after variable-height messages settle", async ({
+  app,
+  page,
+}) => {
+  const room = await app.room("Search positioning");
+  const sequences: number[] = [];
+  for (let index = 1; index <= 90; index++) {
+    const receipt = await app.sendReceipt(
+      app.owner,
+      room,
+      `PositionNeedle${String(index).padStart(3, "0")}\n\n${"Some ordinary chat text with a varying length. ".repeat(1 + (index % 7) * 9)}`,
+    );
+    sequences.push(receipt.sequence);
+  }
+  await app.open(page, app.member, "/search");
+  // The early around-window includes the room intro; the later one has paging.
+  for (const target of [15, 50]) {
+    await page.goto(
+      `${app.origin}/search?q=PositionNeedle${String(target).padStart(3, "0")}`,
+    );
+    await page
+      .getByRole("link", { name: "Open at message", exact: true })
+      .click();
+    const row = page.locator(
+      `[data-timeline-sequence="${sequences[target - 1]}"]`,
+    );
+    await expect(row.locator("article")).toBeFocused();
+    const centerError = () =>
+      row.evaluate((element) => {
+        const viewport = element.closest("[data-message-count]")!;
+        const outer = viewport.getBoundingClientRect();
+        const inner = element.getBoundingClientRect();
+        return Math.abs(
+          (inner.top + inner.bottom - outer.top - outer.bottom) / 2,
+        );
+      });
+    await expect.poll(centerError).toBeLessThan(2);
+    // Focus and mounting alone also pass for rows outside the visible viewport.
+    await expect(row).toBeInViewport({ ratio: 1 });
+    await expect(row.locator("article")).not.toHaveAttribute(
+      "data-jump-target",
+    );
+    expect(await centerError()).toBeLessThan(2);
+  }
+});
+
 for (const target of [1, 65]) {
   test(`a held around request at message ${target} never reads the resident latest tail`, async ({
     app,
